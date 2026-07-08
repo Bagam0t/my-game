@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>✨ 3 в ряд</title>
     <style>
-        /* --- ОБЩИЕ СБРОСЫ --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
         body {
             display: flex;
             justify-content: center;
@@ -39,7 +32,7 @@
             box-shadow: 0 25px 80px rgba(0,0,0,0.9);
         }
 
-        /* --- МЕНЮ --- */
+        /* ===== МЕНЮ ===== */
         #menu {
             position: absolute;
             inset: 0;
@@ -59,7 +52,7 @@
             pointer-events: none;
         }
         #menu .logo {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 900;
             background: linear-gradient(135deg, #f1c40f, #e94560);
             -webkit-background-clip: text;
@@ -68,33 +61,48 @@
         }
         #menu .subtitle {
             color: rgba(255,255,255,0.3);
-            font-size: 13px;
-            letter-spacing: 6px;
+            font-size: 12px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        #menu input {
+        #menu .mode-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 16px;
+        }
+        #menu .mode-btn {
             background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 16px 20px;
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 14px 8px;
             color: #fff;
-            font-size: 18px;
-            width: 85%;
-            max-width: 300px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            touch-action: manipulation;
             text-align: center;
-            outline: none;
-            margin-bottom: 14px;
         }
-        #menu input::placeholder { color: rgba(255,255,255,0.25); }
-        #menu input:focus { border-color: #e94560; }
-        #menu .btn {
+        #menu .mode-btn:active { transform: scale(0.95); background: rgba(255,255,255,0.12); }
+        #menu .mode-btn .icon { font-size: 24px; display: block; margin-bottom: 4px; }
+        #menu .mode-btn .label { font-size: 13px; }
+        #menu .mode-btn .sub { font-size: 10px; color: rgba(255,255,255,0.3); font-weight: 400; }
+        #menu .mode-btn.active {
+            border-color: #e94560;
+            background: rgba(233,69,96,0.15);
+            box-shadow: 0 0 30px rgba(233,69,96,0.1);
+        }
+        #menu .play-btn {
             background: linear-gradient(135deg, #e94560, #c73652);
             border: none;
             color: #fff;
-            padding: 18px 50px;
+            padding: 16px 40px;
             border-radius: 50px;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 8px 30px rgba(233,69,96,0.35);
@@ -102,21 +110,22 @@
             max-width: 300px;
             touch-action: manipulation;
             transition: transform 0.15s;
+            margin-top: 4px;
         }
-        #menu .btn:active { transform: scale(0.95); }
+        #menu .play-btn:active { transform: scale(0.95); }
         #menu .footer-links {
             color: rgba(255,255,255,0.2);
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 14px;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
             background: rgba(255,255,255,0.03);
             touch-action: manipulation;
         }
         #menu .footer-links:active { color: #fff; background: rgba(255,255,255,0.08); }
 
-        /* --- ХЕДЕР --- */
+        /* ===== ХЕДЕР ===== */
         #header {
             display: flex;
             justify-content: space-between;
@@ -168,20 +177,18 @@
         }
         #header .timer.warning { color: #e94560; animation: pulse 0.6s infinite alternate; }
         @keyframes pulse { from { opacity: 1; } to { opacity: 0.5; } }
-        #header .nick {
-            background: rgba(255,255,255,0.06);
-            padding: 4px 10px;
+        #header .mode-label {
+            background: rgba(255,255,255,0.05);
+            padding: 2px 10px;
             border-radius: 30px;
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
             border: 1px solid rgba(255,255,255,0.04);
-            max-width: 70px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- КАНВАС --- */
+        /* ===== КАНВАС ===== */
         .canvas-wrap {
             flex: 1;
             display: flex;
@@ -204,7 +211,7 @@
         }
         canvas:active { cursor: grabbing; }
 
-        /* --- ФУТЕР --- */
+        /* ===== ФУТЕР ===== */
         #footer {
             display: flex;
             justify-content: space-between;
@@ -237,7 +244,7 @@
             flex: 1.2;
         }
 
-        /* --- МОДАЛ --- */
+        /* ===== МОДАЛ ===== */
         #modal {
             position: absolute;
             inset: 0;
@@ -267,12 +274,12 @@
         #modal .box .list .item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 4px;
+            padding: 6px 4px;
             border-bottom: 1px solid rgba(255,255,255,0.03);
             color: rgba(255,255,255,0.6);
-            font-size: 15px;
+            font-size: 14px;
         }
-        #modal .box .list .item .rank { font-weight: 600; width: 36px; color: rgba(255,255,255,0.2); }
+        #modal .box .list .item .rank { font-weight: 600; width: 32px; color: rgba(255,255,255,0.2); }
         #modal .box .list .item .rank.gold { color: #ffd700; }
         #modal .box .list .item .rank.silver { color: #c0c0c0; }
         #modal .box .list .item .rank.bronze { color: #cd7f32; }
@@ -293,30 +300,33 @@
         }
         #modal .box .close-btn:active { transform: scale(0.94); background: rgba(255,255,255,0.12); }
 
-        /* --- АДАПТАЦИЯ --- */
+        /* ===== АДАПТАЦИЯ ===== */
         @media (max-width: 440px) {
             .app { border-radius: 0; max-height: 100vh; }
             #menu { border-radius: 0; }
             #modal { border-radius: 0; }
-            #menu .logo { font-size: 36px; }
-            #menu .btn { padding: 16px 30px; font-size: 19px; }
-            #menu input { font-size: 16px; padding: 14px 16px; }
+            #menu .logo { font-size: 32px; }
+            #menu .mode-btn { padding: 10px 6px; font-size: 13px; }
+            #menu .mode-btn .icon { font-size: 20px; }
+            #menu .play-btn { padding: 14px 30px; font-size: 17px; }
+            #menu .mode-grid { gap: 8px; max-width: 280px; }
         }
         @media (max-height: 700px) {
-            #menu .logo { font-size: 30px; }
-            #menu .btn { padding: 12px 24px; font-size: 17px; }
-            #menu input { padding: 10px 16px; font-size: 14px; }
-            #header { padding: 8px 12px 4px 12px; min-height: 36px; }
+            #menu .logo { font-size: 28px; }
+            #menu .mode-btn { padding: 8px 4px; font-size: 12px; }
+            #menu .mode-btn .icon { font-size: 18px; }
+            #menu .mode-grid { gap: 6px; max-width: 260px; margin-bottom: 10px; }
+            #menu .play-btn { padding: 12px 24px; font-size: 16px; }
+            #menu .subtitle { margin-bottom: 12px; font-size: 10px; }
+            #header { padding: 6px 12px 2px 12px; min-height: 32px; }
             #header .badge { font-size: 11px; padding: 2px 8px; }
             #footer { padding: 4px 10px 8px 10px; }
             #footer button { font-size: 11px; padding: 6px 8px; }
             .canvas-wrap { padding: 2px 8px; }
         }
         @media (pointer: coarse) {
-            /* Для сенсорных экранов увеличиваем кнопки */
-            #menu .btn { padding: 20px 50px; font-size: 24px; }
-            #menu input { padding: 18px 20px; font-size: 20px; }
-            #footer button { padding: 12px 14px; font-size: 15px; }
+            #menu .mode-btn { padding: 16px 10px; }
+            #menu .play-btn { padding: 20px 40px; font-size: 22px; }
         }
     </style>
 </head>
@@ -324,42 +334,63 @@
 
 <div class="app" id="app">
 
-    <!-- МЕНЮ -->
+    <!-- ===== МЕНЮ ===== -->
     <div id="menu">
         <div class="logo">✦ 3 в ряд</div>
-        <div class="subtitle">сохраняй рекорды</div>
-        <input id="nickInput" type="text" placeholder="Введи свой никнейм" maxlength="20">
-        <button class="btn" id="playBtn">▶ ИГРАТЬ</button>
+        <div class="subtitle">выбери режим</div>
+        <div class="mode-grid">
+            <div class="mode-btn active" data-mode="1min">
+                <span class="icon">⚡</span>
+                <div class="label">1 минута</div>
+                <div class="sub">быстрая игра</div>
+            </div>
+            <div class="mode-btn" data-mode="2min">
+                <span class="icon">🔥</span>
+                <div class="label">2 минуты</div>
+                <div class="sub">средняя</div>
+            </div>
+            <div class="mode-btn" data-mode="5min">
+                <span class="icon">🧘</span>
+                <div class="label">5 минут</div>
+                <div class="sub">марафон</div>
+            </div>
+            <div class="mode-btn" data-mode="50moves">
+                <span class="icon">🎯</span>
+                <div class="label">50 ходов</div>
+                <div class="sub">свободная игра</div>
+            </div>
+        </div>
+        <button class="play-btn" id="playBtn">▶ ИГРАТЬ</button>
         <div class="footer-links" id="menuRecordsBtn">🏆 Рекорды</div>
     </div>
 
-    <!-- ХЕДЕР -->
+    <!-- ===== ХЕДЕР ===== -->
     <div id="header">
         <div class="logo-small">✦ 3 в ряд</div>
         <div class="right">
-            <div class="nick" id="nickBadge">Гость</div>
+            <div class="mode-label" id="modeLabel">1 мин</div>
             <div class="badge">🎯 <span id="scoreDisplay">0</span></div>
             <div class="timer" id="timerDisplay">⏱ 60</div>
         </div>
     </div>
 
-    <!-- КАНВАС -->
+    <!-- ===== КАНВАС ===== -->
     <div class="canvas-wrap">
         <canvas id="canvas" width="400" height="400"></canvas>
     </div>
 
-    <!-- ФУТЕР -->
+    <!-- ===== ФУТЕР ===== -->
     <div id="footer">
         <button id="footerRecordsBtn">🏆</button>
         <button id="restartBtn">🔄 Сброс</button>
         <button class="primary" id="homeBtn">🏠 Меню</button>
     </div>
 
-    <!-- МОДАЛ -->
+    <!-- ===== МОДАЛ ===== -->
     <div id="modal">
         <div class="box">
-            <h2>🏆 Мои рекорды</h2>
-            <div class="sub">твои лучшие результаты</div>
+            <h2>🏆 Рекорды</h2>
+            <div class="sub" id="modalSub">твои лучшие результаты</div>
             <div class="list" id="recordsList"></div>
             <button class="close-btn" id="modalCloseBtn">✕ Закрыть</button>
         </div>
@@ -370,26 +401,24 @@
 // ============================================================
 // 0. РЕКОРДЫ (localStorage)
 // ============================================================
-let currentNick = '';
-
 function getRecords() {
-    try { return JSON.parse(localStorage.getItem('game_records')) || {}; } catch { return {}; }
+    try { return JSON.parse(localStorage.getItem('game_records_v2')) || {}; } catch { return {}; }
 }
 function saveRecords(data) {
-    localStorage.setItem('game_records', JSON.stringify(data));
+    localStorage.setItem('game_records_v2', JSON.stringify(data));
 }
-function addRecord(nick, score) {
+function addRecord(mode, score) {
     let all = getRecords();
-    if (!all[nick]) all[nick] = [];
-    all[nick].push(score);
-    all[nick].sort((a,b) => b - a);
-    if (all[nick].length > 10) all[nick].length = 10;
+    if (!all[mode]) all[mode] = [];
+    all[mode].push(score);
+    all[mode].sort((a,b) => b - a);
+    if (all[mode].length > 10) all[mode].length = 10;
     saveRecords(all);
-    return all[nick];
+    return all[mode];
 }
-function getPlayerRecords(nick) {
+function getPlayerRecords(mode) {
     let all = getRecords();
-    return all[nick] || [];
+    return all[mode] || [];
 }
 
 // ============================================================
@@ -399,16 +428,18 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('scoreDisplay');
 const timerDisplay = document.getElementById('timerDisplay');
-const nickBadge = document.getElementById('nickBadge');
+const modeLabel = document.getElementById('modeLabel');
 
 const SIZE = 8;
 const TILE = 400 / SIZE;
 const EMOJIS = ['🍎', '⭐', '🍒', '💎', '🍉'];
-const DURATION = 60;
 
+let currentMode = '1min';
 let grid = [];
 let score = 0;
-let timer = DURATION;
+let timer = 60;
+let maxMoves = 50;
+let movesLeft = 50;
 let gameActive = false;
 let timerInterval = null;
 let isProcessing = false;
@@ -423,7 +454,6 @@ let isGameOver = false;
 // ===== МЕНЮ =====
 const menu = document.getElementById('menu');
 const header = document.getElementById('header');
-const nickInput = document.getElementById('nickInput');
 
 function showMenu() {
     menu.classList.remove('hidden');
@@ -432,6 +462,28 @@ function showMenu() {
 function hideMenu() {
     menu.classList.add('hidden');
     header.classList.add('visible');
+}
+
+// ===== ВЫБОР РЕЖИМА =====
+const modeBtns = document.querySelectorAll('.mode-btn');
+let selectedMode = '1min';
+
+modeBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        modeBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedMode = this.dataset.mode;
+    });
+});
+
+function getModeConfig(mode) {
+    switch(mode) {
+        case '1min': return { label: '1 мин', time: 60, moves: Infinity, type: 'time' };
+        case '2min': return { label: '2 мин', time: 120, moves: Infinity, type: 'time' };
+        case '5min': return { label: '5 мин', time: 300, moves: Infinity, type: 'time' };
+        case '50moves': return { label: '50 ходов', time: Infinity, moves: 50, type: 'moves' };
+        default: return { label: '1 мин', time: 60, moves: Infinity, type: 'time' };
+    }
 }
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
@@ -523,88 +575,4 @@ function processMatches() {
     for (const pos of matches) {
         const [r, c] = pos.split(',').map(Number);
         popAnims.push({ row: r, col: c, progress: 0 });
-        for (let i = 0; i < 5; i++) {
-            sparkles.push({
-                x: c * TILE + TILE/2,
-                y: r * TILE + TILE/2,
-                vx: (Math.random() - 0.5) * 6,
-                vy: (Math.random() - 0.5) * 6 - 2,
-                life: 1,
-                size: 3 + Math.random() * 4,
-                color: ['#ffd700', '#e94560', '#f1c40f', '#2ecc71', '#3498db'][Math.floor(Math.random() * 5)]
-            });
-        }
-    }
-
-    for (const pos of matches) {
-        const [r, c] = pos.split(',').map(Number);
-        grid[r][c] = null;
-    }
-    dropDown();
-    return true;
-}
-
-function processAllMatches() {
-    if (isProcessing) return;
-    isProcessing = true;
-    let iter = 0;
-    function step() {
-        if (iter > 20 || isGameOver) { isProcessing = false; return; }
-        if (!processMatches()) {
-            isProcessing = false;
-            if (!hasValidMoves() && !isGameOver) {
-                setTimeout(shuffleGrid, 300);
-            }
-            return;
-        }
-        iter++;
-        setTimeout(step, 250);
-    }
-    step();
-}
-
-function hasValidMoves() {
-    for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-            if (c < SIZE - 1) {
-                [grid[r][c], grid[r][c+1]] = [grid[r][c+1], grid[r][c]];
-                if (findMatches().size > 0) {
-                    [grid[r][c], grid[r][c+1]] = [grid[r][c+1], grid[r][c]];
-                    return true;
-                }
-                [grid[r][c], grid[r][c+1]] = [grid[r][c+1], grid[r][c]];
-            }
-            if (r < SIZE - 1) {
-                [grid[r][c], grid[r+1][c]] = [grid[r+1][c], grid[r][c]];
-                if (findMatches().size > 0) {
-                    [grid[r][c], grid[r+1][c]] = [grid[r+1][c], grid[r][c]];
-                    return true;
-                }
-                [grid[r][c], grid[r+1][c]] = [grid[r+1][c], grid[r][c]];
-            }
-        }
-    }
-    return false;
-}
-
-function shuffleGrid() {
-    const flat = [];
-    for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-            flat.push(grid[r][c]);
-        }
-    }
-    for (let i = flat.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [flat[i], flat[j]] = [flat[j], flat[i]];
-    }
-    let idx = 0;
-    for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-            grid[r][c] = flat[idx++];
-        }
-    }
-    processAllMatches();
-}
-
-// =====
+        
