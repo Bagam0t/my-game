@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>✨ 3 в ряд</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+        /* --- ОБЩИЕ СБРОСЫ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
         body {
             display: flex;
             justify-content: center;
@@ -15,6 +22,8 @@
             background: #0a0a1a;
             overflow: hidden;
             touch-action: none;
+            margin: 0;
+            padding: 0;
         }
         .app {
             position: relative;
@@ -27,8 +36,10 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.9);
         }
-        /* ===== МЕНЮ ===== */
+
+        /* --- МЕНЮ --- */
         #menu {
             position: absolute;
             inset: 0;
@@ -39,11 +50,12 @@
             align-items: center;
             background: radial-gradient(ellipse at 50% 30%, #1a2a5e, #0a0a1a);
             padding: 30px;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s ease, transform 0.5s ease;
             border-radius: 32px;
         }
         #menu.hidden {
             opacity: 0;
+            transform: scale(1.05);
             pointer-events: none;
         }
         #menu .logo {
@@ -52,23 +64,24 @@
             background: linear-gradient(135deg, #f1c40f, #e94560);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
         }
         #menu .subtitle {
             color: rgba(255,255,255,0.3);
             font-size: 13px;
             letter-spacing: 6px;
             text-transform: uppercase;
-            margin: 4px 0 24px 0;
+            margin-bottom: 24px;
         }
         #menu input {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 30px;
-            padding: 12px 20px;
+            padding: 16px 20px;
             color: #fff;
-            font-size: 16px;
-            width: 80%;
-            max-width: 280px;
+            font-size: 18px;
+            width: 85%;
+            max-width: 300px;
             text-align: center;
             outline: none;
             margin-bottom: 14px;
@@ -79,54 +92,64 @@
             background: linear-gradient(135deg, #e94560, #c73652);
             border: none;
             color: #fff;
-            padding: 16px 50px;
+            padding: 18px 50px;
             border-radius: 50px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 8px 30px rgba(233,69,96,0.35);
-            width: 80%;
-            max-width: 280px;
+            width: 85%;
+            max-width: 300px;
+            touch-action: manipulation;
+            transition: transform 0.15s;
         }
-        #menu .btn:active { transform: scale(0.92); }
+        #menu .btn:active { transform: scale(0.95); }
         #menu .footer-links {
             color: rgba(255,255,255,0.2);
-            font-size: 13px;
+            font-size: 16px;
             margin-top: 20px;
             cursor: pointer;
-            padding: 4px 12px;
+            padding: 8px 16px;
             border-radius: 20px;
             background: rgba(255,255,255,0.03);
+            touch-action: manipulation;
         }
         #menu .footer-links:active { color: #fff; background: rgba(255,255,255,0.08); }
 
-        /* ===== ХЕДЕР ===== */
+        /* --- ХЕДЕР --- */
         #header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px 8px 20px;
+            padding: 12px 16px 6px 16px;
             color: #fff;
             flex-shrink: 0;
             background: linear-gradient(180deg, rgba(20,20,41,0.95) 0%, transparent 100%);
             z-index: 10;
             opacity: 0;
             transition: opacity 0.3s;
+            min-height: 44px;
         }
         #header.visible { opacity: 1; }
         #header .logo-small {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
             background: linear-gradient(135deg, #f1c40f, #e94560);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        #header .right { display: flex; align-items: center; gap: 8px; }
+        #header .right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
         #header .badge {
             background: rgba(255,255,255,0.07);
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #fff;
             border: 1px solid rgba(255,255,255,0.06);
@@ -134,38 +157,39 @@
         #header .badge span { color: #f1c40f; }
         #header .timer {
             background: rgba(255,255,255,0.07);
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: #fff;
             border: 1px solid rgba(255,255,255,0.06);
-            min-width: 48px;
+            min-width: 40px;
             text-align: center;
         }
         #header .timer.warning { color: #e94560; animation: pulse 0.6s infinite alternate; }
         @keyframes pulse { from { opacity: 1; } to { opacity: 0.5; } }
         #header .nick {
             background: rgba(255,255,255,0.06);
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255,255,255,0.5);
             border: 1px solid rgba(255,255,255,0.04);
-            max-width: 80px;
+            max-width: 70px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        /* ===== КАНВАС ===== */
+        /* --- КАНВАС --- */
         .canvas-wrap {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 4px 12px;
+            padding: 4px 10px;
             min-height: 0;
+            touch-action: none;
         }
         canvas {
             width: 100%;
@@ -174,26 +198,26 @@
             background: #0f1a2e;
             box-shadow: inset 0 0 60px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.6);
             touch-action: none;
-            cursor: grab;
             max-width: 400px;
             max-height: 400px;
+            cursor: grab;
         }
         canvas:active { cursor: grabbing; }
 
-        /* ===== ФУТЕР ===== */
+        /* --- ФУТЕР --- */
         #footer {
             display: flex;
             justify-content: space-between;
-            padding: 8px 16px 14px 16px;
+            padding: 6px 12px 12px 12px;
             flex-shrink: 0;
-            gap: 8px;
+            gap: 6px;
             background: linear-gradient(0deg, rgba(20,20,41,0.95) 0%, transparent 100%);
         }
         #footer button {
             background: rgba(255,255,255,0.06);
             border: none;
             color: rgba(255,255,255,0.6);
-            padding: 8px 14px;
+            padding: 10px 12px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 600;
@@ -201,8 +225,10 @@
             border: 1px solid rgba(255,255,255,0.04);
             flex: 1;
             text-align: center;
+            touch-action: manipulation;
+            transition: background 0.15s, transform 0.15s;
         }
-        #footer button:active { transform: scale(0.92); background: rgba(255,255,255,0.12); }
+        #footer button:active { transform: scale(0.95); background: rgba(255,255,255,0.12); }
         #footer .primary {
             background: linear-gradient(135deg, #e94560, #c73652);
             color: #fff;
@@ -211,7 +237,7 @@
             flex: 1.2;
         }
 
-        /* ===== МОДАЛ ===== */
+        /* --- МОДАЛ --- */
         #modal {
             position: absolute;
             inset: 0;
@@ -241,12 +267,12 @@
         #modal .box .list .item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 4px;
+            padding: 8px 4px;
             border-bottom: 1px solid rgba(255,255,255,0.03);
             color: rgba(255,255,255,0.6);
-            font-size: 14px;
+            font-size: 15px;
         }
-        #modal .box .list .item .rank { font-weight: 600; width: 32px; color: rgba(255,255,255,0.2); }
+        #modal .box .list .item .rank { font-weight: 600; width: 36px; color: rgba(255,255,255,0.2); }
         #modal .box .list .item .rank.gold { color: #ffd700; }
         #modal .box .list .item .rank.silver { color: #c0c0c0; }
         #modal .box .list .item .rank.bronze { color: #cd7f32; }
@@ -255,24 +281,42 @@
         #modal .box .close-btn {
             width: 100%;
             margin-top: 12px;
-            padding: 12px;
+            padding: 14px;
             background: rgba(255,255,255,0.06);
             border: none;
             border-radius: 30px;
             color: #fff;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
+            touch-action: manipulation;
         }
         #modal .box .close-btn:active { transform: scale(0.94); background: rgba(255,255,255,0.12); }
 
+        /* --- АДАПТАЦИЯ --- */
         @media (max-width: 440px) {
             .app { border-radius: 0; max-height: 100vh; }
             #menu { border-radius: 0; }
             #modal { border-radius: 0; }
             #menu .logo { font-size: 36px; }
-            #menu .btn { padding: 14px 30px; font-size: 17px; }
-            #menu input { font-size: 14px; padding: 10px 16px; }
+            #menu .btn { padding: 16px 30px; font-size: 19px; }
+            #menu input { font-size: 16px; padding: 14px 16px; }
+        }
+        @media (max-height: 700px) {
+            #menu .logo { font-size: 30px; }
+            #menu .btn { padding: 12px 24px; font-size: 17px; }
+            #menu input { padding: 10px 16px; font-size: 14px; }
+            #header { padding: 8px 12px 4px 12px; min-height: 36px; }
+            #header .badge { font-size: 11px; padding: 2px 8px; }
+            #footer { padding: 4px 10px 8px 10px; }
+            #footer button { font-size: 11px; padding: 6px 8px; }
+            .canvas-wrap { padding: 2px 8px; }
+        }
+        @media (pointer: coarse) {
+            /* Для сенсорных экранов увеличиваем кнопки */
+            #menu .btn { padding: 20px 50px; font-size: 24px; }
+            #menu input { padding: 18px 20px; font-size: 20px; }
+            #footer button { padding: 12px 14px; font-size: 15px; }
         }
     </style>
 </head>
@@ -374,6 +418,7 @@ let sparkles = [];
 let comboCount = 0;
 let swipeAnim = null;
 let animId = null;
+let isGameOver = false;
 
 // ===== МЕНЮ =====
 const menu = document.getElementById('menu');
@@ -416,6 +461,7 @@ function initGrid() {
     sparkles = [];
     comboCount = 0;
     swipeAnim = null;
+    isGameOver = false;
 }
 
 function findMatches() {
@@ -503,10 +549,10 @@ function processAllMatches() {
     isProcessing = true;
     let iter = 0;
     function step() {
-        if (iter > 20) { isProcessing = false; return; }
+        if (iter > 20 || isGameOver) { isProcessing = false; return; }
         if (!processMatches()) {
             isProcessing = false;
-            if (!hasValidMoves()) {
+            if (!hasValidMoves() && !isGameOver) {
                 setTimeout(shuffleGrid, 300);
             }
             return;
@@ -561,54 +607,4 @@ function shuffleGrid() {
     processAllMatches();
 }
 
-// ===== ОТРИСОВКА =====
-function draw() {
-    ctx.clearRect(0, 0, 400, 400);
-
-    for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-            const x = c * TILE, y = r * TILE;
-            ctx.fillStyle = (r + c) % 2 === 0 ? '#1a2a4a' : '#12203a';
-            ctx.fillRect(x, y, TILE - 1, TILE - 1);
-        }
-    }
-
-    for (const a of dropAnims) a.progress = Math.min(a.progress + 0.05, 1);
-    dropAnims = dropAnims.filter(a => a.progress < 1);
-    for (const a of popAnims) a.progress += 0.08;
-    popAnims = popAnims.filter(a => a.progress < 1);
-
-    for (const s of sparkles) {
-        s.x += s.vx;
-        s.y += s.vy;
-        s.vy += 0.1;
-        s.life -= 0.025;
-    }
-    sparkles = sparkles.filter(s => s.life > 0);
-
-    const tiles = [];
-    for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-            if (grid[r][c] === null) continue;
-            tiles.push({ row: r, col: c, value: grid[r][c] });
-        }
-    }
-
-    if (swipeAnim && swipeAnim.progress < 1) {
-        swipeAnim.progress += 0.06;
-        const ease = 1 - Math.pow(1 - swipeAnim.progress, 3);
-        const offsetX = swipeAnim.offsetX * ease;
-        const offsetY = swipeAnim.offsetY * ease;
-        const val = grid[swipeAnim.row]?.[swipeAnim.col];
-        if (val !== undefined && val !== null) {
-            tiles.push({
-                row: swipeAnim.row,
-                col: swipeAnim.col,
-                value: val,
-                offsetX: offsetX,
-                offsetY: offsetY,
-                scale: 1 - 0.05 * ease,
-                isSwiping: true
-            });
-        }
-        if (swipeAnim.progr
+// =====
