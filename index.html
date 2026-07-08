@@ -132,6 +132,11 @@
             flex-shrink: 0;
             background: linear-gradient(180deg, rgba(20,20,41,0.95) 0%, transparent 100%);
             z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .header.visible {
+            opacity: 1;
         }
         .header .logo-small {
             font-size: 16px;
@@ -440,6 +445,7 @@ const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('scoreDisplay');
 const timerDisplay = document.getElementById('timerDisplay');
 const nicknameBadge = document.getElementById('nicknameBadge');
+const gameHeader = document.getElementById('gameHeader');
 
 const SIZE = 8;
 const TILE = 400 / SIZE;
@@ -461,16 +467,15 @@ let animFrameId = null;
 
 // ===== МЕНЮ =====
 const menuScreen = document.getElementById('menuScreen');
-const gameHeader = document.getElementById('gameHeader');
 const nicknameInput = document.getElementById('nicknameInput');
 
 function showMenu() {
     menuScreen.classList.remove('hidden');
-    gameHeader.style.opacity = '0';
+    gameHeader.classList.remove('visible');
 }
 function hideMenu() {
     menuScreen.classList.add('hidden');
-    gameHeader.style.opacity = '1';
+    gameHeader.classList.add('visible');
 }
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
@@ -604,6 +609,4 @@ function processAllMatches() {
 function hasValidMoves() {
     for (let r = 0; r < SIZE; r++) {
         for (let c = 0; c < SIZE; c++) {
-            if (c < SIZE - 1) {
-                [grid[r][c], grid[r][c+1]] = [grid[r][c+1], grid[r][c]];
-                if (findMatches().size > 0)
+            i
