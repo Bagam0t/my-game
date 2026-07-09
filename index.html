@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>✨ 3 в ряд — онлайн</title>
     <style>
-        /* ===== СТИЛИ (те же, что были) ===== */
+        /* ===== ОБЩИЕ СТИЛИ ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
         html, body { width: 100%; height: 100%; overflow: hidden; touch-action: none; }
         body { display: flex; justify-content: center; align-items: center; font-family: Arial, sans-serif; background: #0a0a1a; margin: 0; padding: 0; }
@@ -23,6 +23,7 @@
             box-shadow: 0 25px 80px rgba(0,0,0,0.9);
         }
 
+        /* ===== МЕНЮ ===== */
         #menu {
             position: absolute;
             inset: 0;
@@ -138,6 +139,7 @@
         #menu .status.online { color: #2ecc71; }
         #menu .status.offline { color: #e94560; }
 
+        /* ===== ХЕДЕР ===== */
         #header {
             display: flex;
             justify-content: space-between;
@@ -164,15 +166,33 @@
         #header .sound-btn:active { transform: scale(0.85); }
         #header .sound-btn.muted { opacity: 0.3; }
 
-        .canvas-wrap { flex: 1; display: flex; justify-content: center; align-items: center; padding: clamp(2px, 0.8vw, 8px) clamp(8px, 2vw, 16px); min-height: 0; touch-action: none; }
+        /* ===== КАНВАС (поднят, чтобы кнопки были выше) ===== */
+        .canvas-wrap { 
+            flex: 1; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: clamp(2px, 0.8vw, 8px) clamp(8px, 2vw, 16px) clamp(4px, 1vw, 10px) clamp(8px, 2vw, 16px); 
+            min-height: 0; 
+            touch-action: none; 
+        }
         canvas { width: 100%; aspect-ratio: 1/1; border-radius: clamp(12px, 2.5vw, 20px); background: #0f1a2e; box-shadow: inset 0 0 60px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.6); touch-action: none; max-width: 400px; max-height: 400px; cursor: grab; }
         canvas:active { cursor: grabbing; }
 
-        #footer { display: flex; justify-content: space-between; padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) clamp(8px, 2vw, 16px) clamp(8px, 2vw, 16px); flex-shrink: 0; gap: clamp(4px, 1vw, 10px); background: linear-gradient(0deg, rgba(20,20,41,0.95) 0%, transparent 100%); }
+        /* ===== ФУТЕР (поднят) ===== */
+        #footer { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: clamp(2px, 0.5vw, 6px) clamp(8px, 2vw, 16px) clamp(6px, 1.5vw, 14px) clamp(8px, 2vw, 16px); 
+            flex-shrink: 0; 
+            gap: clamp(4px, 1vw, 10px); 
+            background: linear-gradient(0deg, rgba(20,20,41,0.95) 0%, transparent 100%);
+        }
         #footer button { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.6); padding: clamp(6px, 1.5vw, 12px) clamp(8px, 2vw, 16px); border-radius: 30px; font-size: clamp(10px, 2vw, 14px); font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.04); flex: 1; text-align: center; touch-action: manipulation; transition: background 0.15s, transform 0.15s; }
         #footer button:active { transform: scale(0.95); background: rgba(255,255,255,0.12); }
         #footer .primary { background: linear-gradient(135deg, #e94560, #c73652); color: #fff; border: none; box-shadow: 0 4px 20px rgba(233,69,96,0.3); flex: 1.2; }
 
+        /* ===== МОДАЛ ===== */
         #modal {
             position: absolute;
             inset: 0;
@@ -252,6 +272,7 @@
         #modal .box .close-btn { width: 100%; margin-top: 12px; padding: clamp(10px, 2vw, 16px); background: rgba(255,255,255,0.06); border: none; border-radius: 30px; color: #fff; font-size: clamp(13px, 2.5vw, 17px); font-weight: 600; cursor: pointer; touch-action: manipulation; flex-shrink: 0; }
         #modal .box .close-btn:active { transform: scale(0.94); background: rgba(255,255,255,0.12); }
 
+        /* ===== АДАПТАЦИЯ ===== */
         @media (max-width: 440px) { .app { border-radius: 0; max-height: 100vh; } #menu { border-radius: 0; padding: 16px; } #modal { border-radius: 0; } }
         @media (max-height: 700px) {
             #menu .logo { font-size: clamp(24px, 6vw, 32px); }
@@ -272,7 +293,7 @@
             #header .sound-btn { font-size: 11px; padding: 0 6px; }
             #footer { padding: 2px 6px 6px 6px; gap: 4px; }
             #footer button { font-size: 9px; padding: 4px 6px; }
-            .canvas-wrap { padding: 2px 6px; }
+            .canvas-wrap { padding: 2px 6px 4px 6px; }
             #modal .box .tab-btn { font-size: 8px; padding: 2px 8px; }
         }
         @media (pointer: coarse) {
@@ -347,7 +368,7 @@
         <canvas id="canvas" width="400" height="400"></canvas>
     </div>
 
-    <!-- ===== ФУТЕР ===== -->
+    <!-- ===== ФУТЕР (поднят) ===== -->
     <div id="footer">
         <button id="footerRecordsBtn">🏆</button>
         <button id="footerOnlineBtn">🌐</button>
@@ -355,7 +376,7 @@
         <button class="primary" id="homeBtn">🏠 Меню</button>
     </div>
 
-    <!-- ===== МОДАЛ РЕКОРДОВ ===== -->
+    <!-- ===== МОДАЛ ===== -->
     <div id="modal">
         <div class="box">
             <div class="modal-header">
@@ -380,7 +401,7 @@
 // 0. ПОДКЛЮЧЕНИЕ К GOOGLE SHEETS
 // ============================================================
 // ⚠️ ВСТАВЬ СВОЙ URL ОТ GOOGLE APPS SCRIPT
-const BACKEND_URL = "https://script.google.com/macros/s/ТВОЙ_НОВЫЙ_URL/exec";
+const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxHQTE0IONZmWNgqkvwGKd51qRh6jrBMTyHkVjgtahYpX3yl43qNHAD1yniAUTlU3eM/exec";
 
 let onlineEnabled = false;
 let currentNickname = '';
@@ -452,7 +473,7 @@ async function updateOnlineBadges() {
 }
 
 // ============================================================
-// 1. ЗВУКОВАЯ СИСТЕМА
+// 1. ЗВУК
 // ============================================================
 class SoundEngine {
     constructor() {
@@ -497,7 +518,7 @@ class SoundEngine {
 const sound = new SoundEngine();
 
 // ============================================================
-// 2. РЕКОРДЫ (localStorage) — локальные
+// 2. РЕКОРДЫ (localStorage)
 // ============================================================
 function getLocalRecords() {
     try { return JSON.parse(localStorage.getItem('game_records_v4')) || {}; } catch { return {}; }
@@ -958,16 +979,13 @@ function startTimer() {
 
 async function endGame() {
     if (score > 0) {
-        // Сохраняем локально
         const localRecords = addLocalRecord(currentMode, score);
         updateMenuBestScores();
         
-        // Сохраняем онлайн, если есть подключение и никнейм
         let onlineSaved = false;
         if (onlineEnabled && currentNickname) {
             onlineSaved = await saveOnlineRecord(currentMode, currentNickname, score);
             if (onlineSaved) {
-                // Обновляем онлайн-бейджи
                 await updateOnlineBadges();
             }
         }
@@ -990,7 +1008,7 @@ async function endGame() {
 
 // ===== РЕКОРДЫ (ОБНОВЛЕНИЕ МОДАЛА) =====
 let currentTabMode = '1min';
-let currentModalSource = 'local'; // 'local' или 'online'
+let currentModalSource = 'local';
 
 function updateRecordsUI(mode, source = 'local') {
     const container = document.getElementById('recordsList');
@@ -1048,7 +1066,6 @@ function updateRecordsUI(mode, source = 'local') {
     }
 }
 
-// ===== ВКЛАДКИ В МОДАЛЕ =====
 const tabBtns = document.querySelectorAll('.tab-btn');
 tabBtns.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -1159,7 +1176,6 @@ function doSwap(r1, c1, r2, c2) {
     processAllMatches();
 }
 
-// ===== СОБЫТИЯ =====
 canvas.addEventListener('mousedown', function(e) { e.preventDefault(); onDown(e.clientX, e.clientY); });
 canvas.addEventListener('mousemove', function(e) { if (isSwiping) { e.preventDefault(); onMove(e.clientX, e.clientY); } });
 canvas.addEventListener('mouseup', function() { onUp(); });
@@ -1190,8 +1206,6 @@ canvas.addEventListener('touchcancel', function(e) {
 // ============================================================
 // 5. УПРАВЛЕНИЕ
 // ============================================================
-
-// ЗВУК
 soundToggle.addEventListener('click', function() {
     sound.init();
     const enabled = sound.toggle();
@@ -1199,7 +1213,6 @@ soundToggle.addEventListener('click', function() {
     soundToggle.classList.toggle('muted', !enabled);
 });
 
-// ИГРАТЬ
 document.getElementById('playBtn').addEventListener('click', function() {
     const nick = nickInput.value.trim();
     if (!nick) {
@@ -1217,7 +1230,6 @@ document.getElementById('playBtn').addEventListener('click', function() {
     restartGame();
 });
 
-// Сброс
 function restartGame() {
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = null;
@@ -1240,7 +1252,6 @@ document.getElementById('restartBtn').addEventListener('touchstart', function(e)
     restartGame();
 }, { passive: false });
 
-// Меню (домой)
 document.getElementById('homeBtn').addEventListener('click', function() {
     if (gameActive || score > 0) {
         if (!confirm('Выйти в меню? Прогресс будет потерян.')) return;
@@ -1256,7 +1267,6 @@ document.getElementById('homeBtn').addEventListener('touchstart', function(e) {
     document.getElementById('homeBtn').click();
 }, { passive: false });
 
-// Рекорды (локальные)
 document.getElementById('menuRecordsBtn').addEventListener('click', function() {
     currentTabMode = selectedMode;
     tabBtns.forEach(b => {
@@ -1274,7 +1284,6 @@ document.getElementById('footerRecordsBtn').addEventListener('click', function()
     document.getElementById('modal').classList.add('open');
 });
 
-// Таблица лидеров (онлайн)
 document.getElementById('menuOnlineBtn').addEventListener('click', function() {
     if (!onlineEnabled) {
         alert('❌ Онлайн режим недоступен. Проверь подключение к интернету.');
@@ -1313,33 +1322,23 @@ document.getElementById('modal').addEventListener('click', function(e) {
 // 6. СТАРТ
 // ============================================================
 async function init() {
-    // Проверяем подключение к серверу
     await checkConnection();
-    
-    // Если онлайн включён, загружаем бейджи
     if (onlineEnabled) {
         await updateOnlineBadges();
     }
-    
-    // Загружаем сохранённый ник
     const savedNick = localStorage.getItem('game_nickname');
     if (savedNick) {
         nickInput.value = savedNick;
         currentNickname = savedNick;
     }
-    
     initGrid();
     showMenu();
     updateMenuBestScores();
     draw();
     gameActive = false;
     isGameOver = true;
-    
-    console.log('✨ 3 в ряд — Вариант Б (онлайн таблица лидеров)');
-    console.log('🌐 Статус:', onlineEnabled ? 'Онлайн' : 'Офлайн');
-    console.log('📊 Рекорды сохраняются локально и в Google Sheets');
+    console.log('✨ 3 в ряд — онлайн версия');
 }
-
 init();
 </script>
 </body>
