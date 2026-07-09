@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>✨ 3 в ряд — онлайн</title>
     <style>
-        /* Стили такие же, как в варианте А, но с небольшими дополнениями */
+        /* ===== СТИЛИ (те же, что были) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
         html, body { width: 100%; height: 100%; overflow: hidden; touch-action: none; }
         body { display: flex; justify-content: center; align-items: center; font-family: Arial, sans-serif; background: #0a0a1a; margin: 0; padding: 0; }
@@ -23,7 +23,6 @@
             box-shadow: 0 25px 80px rgba(0,0,0,0.9);
         }
 
-        /* ===== МЕНЮ ===== */
         #menu {
             position: absolute;
             inset: 0;
@@ -139,7 +138,6 @@
         #menu .status.online { color: #2ecc71; }
         #menu .status.offline { color: #e94560; }
 
-        /* ===== ХЕДЕР ===== */
         #header {
             display: flex;
             justify-content: space-between;
@@ -166,18 +164,15 @@
         #header .sound-btn:active { transform: scale(0.85); }
         #header .sound-btn.muted { opacity: 0.3; }
 
-        /* ===== КАНВАС ===== */
         .canvas-wrap { flex: 1; display: flex; justify-content: center; align-items: center; padding: clamp(2px, 0.8vw, 8px) clamp(8px, 2vw, 16px); min-height: 0; touch-action: none; }
         canvas { width: 100%; aspect-ratio: 1/1; border-radius: clamp(12px, 2.5vw, 20px); background: #0f1a2e; box-shadow: inset 0 0 60px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.6); touch-action: none; max-width: 400px; max-height: 400px; cursor: grab; }
         canvas:active { cursor: grabbing; }
 
-        /* ===== ФУТЕР ===== */
         #footer { display: flex; justify-content: space-between; padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) clamp(8px, 2vw, 16px) clamp(8px, 2vw, 16px); flex-shrink: 0; gap: clamp(4px, 1vw, 10px); background: linear-gradient(0deg, rgba(20,20,41,0.95) 0%, transparent 100%); }
         #footer button { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.6); padding: clamp(6px, 1.5vw, 12px) clamp(8px, 2vw, 16px); border-radius: 30px; font-size: clamp(10px, 2vw, 14px); font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.04); flex: 1; text-align: center; touch-action: manipulation; transition: background 0.15s, transform 0.15s; }
         #footer button:active { transform: scale(0.95); background: rgba(255,255,255,0.12); }
         #footer .primary { background: linear-gradient(135deg, #e94560, #c73652); color: #fff; border: none; box-shadow: 0 4px 20px rgba(233,69,96,0.3); flex: 1.2; }
 
-        /* ===== МОДАЛ РЕКОРДОВ ===== */
         #modal {
             position: absolute;
             inset: 0;
@@ -257,7 +252,6 @@
         #modal .box .close-btn { width: 100%; margin-top: 12px; padding: clamp(10px, 2vw, 16px); background: rgba(255,255,255,0.06); border: none; border-radius: 30px; color: #fff; font-size: clamp(13px, 2.5vw, 17px); font-weight: 600; cursor: pointer; touch-action: manipulation; flex-shrink: 0; }
         #modal .box .close-btn:active { transform: scale(0.94); background: rgba(255,255,255,0.12); }
 
-        /* ===== АДАПТАЦИЯ ===== */
         @media (max-width: 440px) { .app { border-radius: 0; max-height: 100vh; } #menu { border-radius: 0; padding: 16px; } #modal { border-radius: 0; } }
         @media (max-height: 700px) {
             #menu .logo { font-size: clamp(24px, 6vw, 32px); }
@@ -336,7 +330,7 @@
         </div>
         <div class="status" id="connectionStatus">⏳ Подключение к серверу...</div>
     </div>
-    
+
     <!-- ===== ХЕДЕР ===== -->
     <div id="header">
         <div class="logo-small">✦ 3 в ряд</div>
@@ -385,8 +379,8 @@
 // ============================================================
 // 0. ПОДКЛЮЧЕНИЕ К GOOGLE SHEETS
 // ============================================================
-// ⚠️ ЗАМЕНИ ЭТУ СТРОКУ НА СВОЙ URL ОТ GOOGLE APPS SCRIPT!
-const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxHQTE0IONZmWNgqkvwGKd51qRh6jrBMTyHkVjgtahYpX3yl43qNHAD1yniAUTlU3eM/exec";
+// ⚠️ ВСТАВЬ СВОЙ URL ОТ GOOGLE APPS SCRIPT
+const BACKEND_URL = "https://script.google.com/macros/s/ТВОЙ_НОВЫЙ_URL/exec";
 
 let onlineEnabled = false;
 let currentNickname = '';
@@ -973,7 +967,8 @@ async function endGame() {
         if (onlineEnabled && currentNickname) {
             onlineSaved = await saveOnlineRecord(currentMode, currentNickname, score);
             if (onlineSaved) {
-                updateOnlineBadges();
+                // Обновляем онлайн-бейджи
+                await updateOnlineBadges();
             }
         }
         
@@ -1024,7 +1019,6 @@ function updateRecordsUI(mode, source = 'local') {
                 if (i === 0) cls += ' gold';
                 else if (i === 1) cls += ' silver';
                 else if (i === 2) cls += ' bronze';
-                const date = rec.date ? new Date(rec.date).toLocaleDateString() : '';
                 html += '<div class="item"><span class="' + cls + '">' + rank + '</span><span class="nick">' + rec.nickname + '</span><span class="val">' + rec.score + '</span></div>';
             });
             container.innerHTML = html;
