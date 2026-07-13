@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>✨ 3 в ряд — Делюкс</title>
+    <title>✨ 3 в ряд</title>
     <style>
-        /* ===== ВСЕ СТИЛИ (полная версия) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -19,13 +18,13 @@
             height: 100%;
             overflow: hidden;
             touch-action: none;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0a1a;
         }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #0a0a1a;
             margin: 0;
             padding: 0;
         }
@@ -54,8 +53,8 @@
         }
         .bg-particles span {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
             background: rgba(255, 255, 255, 0.06);
             border-radius: 50%;
             animation: floatUp linear infinite;
@@ -87,11 +86,11 @@
             justify-content: flex-start;
             align-items: center;
             background: #0f1a2e;
-            padding: 16px 12px;
+            padding: 12px 10px;
             transition: opacity 0.5s ease, transform 0.5s ease;
             border-radius: 32px;
             overflow-y: auto;
-            gap: 4px;
+            gap: 3px;
         }
         #menu::-webkit-scrollbar {
             width: 0;
@@ -102,37 +101,38 @@
             pointer-events: none;
         }
         #menu .logo {
-            font-size: clamp(28px, 8vw, 42px);
+            font-size: clamp(26px, 7vw, 38px);
             font-weight: 900;
             background: linear-gradient(135deg, #f1c40f, #e94560);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
             letter-spacing: -2px;
         }
         #menu .logo-sub {
-            color: rgba(255, 255, 255, 0.1);
-            font-size: clamp(8px, 1.5vw, 11px);
-            letter-spacing: 6px;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: clamp(7px, 1.2vw, 10px);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
+
         #menu .user-section {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             width: 100%;
-            max-width: 320px;
-            margin-bottom: 6px;
+            max-width: 300px;
+            margin-bottom: 4px;
         }
         #menu .user-section .nick-input {
             flex: 1;
             background: rgba(255, 255, 255, 0.06);
             border: 2px solid rgba(255, 255, 255, 0.08);
             border-radius: 30px;
-            padding: 8px 16px;
+            padding: 6px 14px;
             color: #fff;
-            font-size: clamp(13px, 2vw, 16px);
+            font-size: clamp(12px, 1.8vw, 15px);
             text-align: center;
             outline: none;
             transition: border-color 0.3s;
@@ -147,9 +147,9 @@
             background: rgba(255, 255, 255, 0.06);
             border: 2px solid rgba(255, 255, 255, 0.08);
             border-radius: 30px;
-            padding: 8px 14px;
+            padding: 6px 12px;
             color: rgba(255, 255, 255, 0.6);
-            font-size: clamp(12px, 1.5vw, 14px);
+            font-size: clamp(10px, 1.2vw, 12px);
             cursor: pointer;
             touch-action: manipulation;
             transition: all 0.3s;
@@ -163,37 +163,22 @@
             border-color: #4c75a3;
             color: #4c75a3;
         }
-        /* ===== БОНУС: кнопка кастомизации ===== */
-        #menu .customize-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 30px;
-            padding: 3px 14px;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: clamp(9px, 1vw, 12px);
-            cursor: pointer;
-            touch-action: manipulation;
-            transition: all 0.3s;
-        }
-        #menu .customize-btn:active {
-            transform: scale(0.95);
-        }
 
         #menu .mode-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
+            gap: 4px;
             width: 100%;
-            max-width: 320px;
-            margin-bottom: 6px;
+            max-width: 300px;
+            margin-bottom: 4px;
         }
         #menu .mode-btn {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 6px 4px;
+            border-radius: 10px;
+            padding: 4px 3px;
             color: #fff;
-            font-size: clamp(10px, 1.8vw, 12px);
+            font-size: clamp(9px, 1.5vw, 11px);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s;
@@ -205,72 +190,74 @@
             background: rgba(255, 255, 255, 0.08);
         }
         #menu .mode-btn .icon {
-            font-size: clamp(16px, 3vw, 22px);
+            font-size: clamp(14px, 2.5vw, 20px);
             display: block;
             margin-bottom: 1px;
         }
         #menu .mode-btn .label {
-            font-size: clamp(9px, 1.5vw, 11px);
+            font-size: clamp(8px, 1.2vw, 10px);
             font-weight: 700;
         }
         #menu .mode-btn .sub {
-            font-size: clamp(7px, 1vw, 9px);
+            font-size: clamp(6px, 0.8vw, 8px);
             color: rgba(255, 255, 255, 0.25);
             font-weight: 400;
         }
         #menu .mode-btn .best-score {
-            font-size: clamp(8px, 1.2vw, 10px);
+            font-size: clamp(7px, 1vw, 9px);
             color: #f1c40f;
-            margin-top: 2px;
+            margin-top: 1px;
         }
         #menu .mode-btn .online-badge {
-            font-size: clamp(6px, 0.8vw, 8px);
+            font-size: clamp(5px, 0.6vw, 7px);
             color: #2ecc71;
             margin-top: 1px;
             opacity: 0.5;
         }
         #menu .mode-btn .size-badge {
-            font-size: clamp(6px, 0.8vw, 8px);
+            font-size: clamp(5px, 0.6vw, 7px);
             color: rgba(255, 255, 255, 0.2);
             margin-top: 1px;
         }
         #menu .mode-btn.active {
             border-color: #e94560;
             background: rgba(233, 69, 96, 0.12);
-            box-shadow: 0 0 25px rgba(233, 69, 96, 0.08);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.06);
         }
+
         #menu .play-btn {
             background: linear-gradient(135deg, #e94560, #c73652);
             border: none;
             color: #fff;
-            padding: 10px 30px;
+            padding: 8px 24px;
             border-radius: 50px;
-            font-size: clamp(16px, 3vw, 20px);
+            font-size: clamp(14px, 2.5vw, 18px);
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 8px 30px rgba(233, 69, 96, 0.35);
             width: 85%;
-            max-width: 280px;
+            max-width: 260px;
             touch-action: manipulation;
             transition: transform 0.15s;
-            margin-top: 2px;
+            margin-top: 1px;
             letter-spacing: 1px;
         }
         #menu .play-btn:active {
             transform: scale(0.95);
         }
+
         #menu .footer-links {
             display: flex;
-            gap: 10px;
-            margin-top: 6px;
+            gap: 6px;
+            margin-top: 4px;
             flex-wrap: wrap;
             justify-content: center;
         }
         #menu .footer-links span {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: clamp(9px, 1.5vw, 12px);
+            color: rgba(255, 255, 255, 0.15);
+            font-size: clamp(8px, 1.2vw, 11px);
             cursor: pointer;
-            padding: 2px 10px;
+            padding: 2px 8px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.03);
             touch-action: manipulation;
@@ -280,18 +267,18 @@
             color: #fff;
             background: rgba(255, 255, 255, 0.08);
         }
-        /* ===== БОНУС: ежедневный бонус ===== */
+
         #menu .daily-bonus {
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.15);
+            background: rgba(255, 215, 0, 0.06);
+            border: 1px solid rgba(255, 215, 0, 0.1);
             border-radius: 30px;
-            padding: 4px 16px;
+            padding: 3px 14px;
             color: #f1c40f;
-            font-size: clamp(10px, 1.5vw, 13px);
+            font-size: clamp(9px, 1.2vw, 12px);
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 4px;
+            gap: 6px;
+            margin-top: 3px;
             cursor: pointer;
             touch-action: manipulation;
             transition: all 0.3s;
@@ -300,7 +287,7 @@
             transform: scale(0.95);
         }
         #menu .daily-bonus .bonus-icon {
-            font-size: clamp(16px, 2vw, 20px);
+            font-size: clamp(14px, 1.8vw, 18px);
         }
         #menu .daily-bonus .bonus-text {
             font-weight: 600;
@@ -310,51 +297,124 @@
             opacity: 0.6;
         }
         #menu .daily-bonus.claimed {
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
+        }
+
+        #menu .tournament-banner {
+            background: rgba(233, 69, 96, 0.08);
+            border: 1px solid rgba(233, 69, 96, 0.15);
+            border-radius: 30px;
+            padding: 3px 14px;
+            color: #e94560;
+            font-size: clamp(9px, 1.2vw, 12px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 3px;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.3s;
+        }
+        #menu .tournament-banner:active {
+            transform: scale(0.95);
+        }
+        #menu .tournament-banner .tournament-icon {
+            font-size: clamp(14px, 1.8vw, 18px);
+        }
+        #menu .tournament-banner .tournament-text {
+            font-weight: 600;
+        }
+        #menu .tournament-banner .tournament-timer {
+            font-weight: 400;
+            opacity: 0.6;
+        }
+
+        #menu .invite-section {
+            display: flex;
+            gap: 4px;
+            margin-top: 3px;
+            width: 100%;
+            max-width: 300px;
+        }
+        #menu .invite-section input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            padding: 3px 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(8px, 1vw, 10px);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #menu .invite-section input:focus {
+            border-color: #e94560;
+            color: #fff;
+        }
+        #menu .invite-section input::placeholder {
+            color: rgba(255, 255, 255, 0.1);
+        }
+        #menu .invite-section .invite-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            padding: 3px 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(8px, 1vw, 10px);
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        #menu .invite-section .invite-btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         #menu .stats {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
-            margin-top: 4px;
+            margin-top: 3px;
             flex-wrap: wrap;
         }
         #menu .stats .stat-item {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            padding: 2px 10px;
+            border-radius: 8px;
+            padding: 1px 8px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
         #menu .stats .stat-item .num {
             color: #fff;
-            font-size: clamp(12px, 2vw, 16px);
+            font-size: clamp(10px, 1.5vw, 14px);
             font-weight: 700;
         }
         #menu .stats .stat-item .label {
             color: rgba(255, 255, 255, 0.2);
-            font-size: clamp(6px, 0.8vw, 8px);
+            font-size: clamp(5px, 0.6vw, 7px);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
+
         #menu .status {
             color: #2ecc71;
-            font-size: clamp(8px, 1.2vw, 11px);
-            margin-top: 4px;
+            font-size: clamp(7px, 1vw, 10px);
+            margin-top: 3px;
             text-align: center;
         }
         #menu .status.offline {
             color: #e94560;
         }
+
         #menu .share-btn {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 30px;
-            padding: 3px 14px;
+            padding: 2px 12px;
             color: rgba(255, 255, 255, 0.3);
-            font-size: clamp(9px, 1vw, 12px);
+            font-size: clamp(8px, 1vw, 10px);
             cursor: pointer;
             touch-action: manipulation;
             transition: all 0.3s;
@@ -363,16 +423,17 @@
         #menu .share-btn:active {
             transform: scale(0.95);
         }
+
         #menu .achievements-preview {
             display: flex;
-            gap: 4px;
+            gap: 3px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 4px;
-            max-width: 320px;
+            margin-top: 3px;
+            max-width: 300px;
         }
         #menu .achievements-preview .ach-badge {
-            font-size: clamp(14px, 2.5vw, 20px);
+            font-size: clamp(12px, 2vw, 18px);
             opacity: 0.2;
             transition: opacity 0.3s;
         }
@@ -385,20 +446,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: clamp(4px, 1vw, 8px) clamp(10px, 2vw, 16px) clamp(2px, 0.5vw, 4px) clamp(10px, 2vw, 16px);
+            padding: 3px 10px 2px 10px;
             color: #fff;
             flex-shrink: 0;
             background: linear-gradient(180deg, rgba(20, 20, 41, 0.95) 0%, transparent 100%);
             z-index: 10;
             opacity: 0;
             transition: opacity 0.3s;
-            min-height: clamp(28px, 5vh, 40px);
+            min-height: 28px;
         }
         #header.visible {
             opacity: 1;
         }
         #header .logo-small {
-            font-size: clamp(10px, 2vw, 14px);
+            font-size: clamp(9px, 1.5vw, 12px);
             font-weight: 800;
             background: linear-gradient(135deg, #f1c40f, #e94560);
             -webkit-background-clip: text;
@@ -407,15 +468,15 @@
         #header .right {
             display: flex;
             align-items: center;
-            gap: clamp(3px, 0.8vw, 8px);
+            gap: 4px;
             flex-wrap: wrap;
             justify-content: flex-end;
         }
         #header .badge {
             background: rgba(255, 255, 255, 0.07);
-            padding: clamp(1px, 0.5vw, 4px) clamp(6px, 1.5vw, 10px);
+            padding: 1px 6px;
             border-radius: 30px;
-            font-size: clamp(9px, 1.5vw, 12px);
+            font-size: clamp(8px, 1.2vw, 11px);
             font-weight: 700;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -426,17 +487,35 @@
             display: inline-block;
         }
         #header .badge span.pop {
-            transform: scale(1.5);
+            transform: scale(1.4);
+        }
+        #header .badge span.record-pop {
+            animation: recordPop 0.8s ease;
+        }
+        @keyframes recordPop {
+            0% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(2);
+                color: #ffd700;
+            }
+            60% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         #header .timer {
             background: rgba(255, 255, 255, 0.07);
-            padding: clamp(1px, 0.5vw, 4px) clamp(4px, 1vw, 8px);
+            padding: 1px 4px;
             border-radius: 30px;
-            font-size: clamp(8px, 1.2vw, 11px);
+            font-size: clamp(7px, 1vw, 10px);
             font-weight: 600;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            min-width: clamp(28px, 5vw, 40px);
+            min-width: 26px;
             text-align: center;
         }
         #header .timer.warning {
@@ -446,18 +525,16 @@
         @keyframes pulse {
             from {
                 opacity: 1;
-                transform: scale(1);
             }
             to {
                 opacity: 0.5;
-                transform: scale(1.05);
             }
         }
         #header .mode-label {
             background: rgba(255, 255, 255, 0.05);
-            padding: 1px clamp(4px, 1vw, 8px);
+            padding: 0 4px;
             border-radius: 30px;
-            font-size: clamp(7px, 1vw, 10px);
+            font-size: clamp(6px, 0.8vw, 9px);
             color: rgba(255, 255, 255, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.04);
             text-transform: uppercase;
@@ -467,13 +544,13 @@
             background: rgba(255, 255, 255, 0.07);
             border: none;
             color: #fff;
-            font-size: clamp(12px, 2vw, 16px);
-            padding: 1px clamp(4px, 1vw, 8px);
+            font-size: clamp(10px, 1.5vw, 14px);
+            padding: 1px 4px;
             border-radius: 30px;
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.06);
             touch-action: manipulation;
-            line-height: 1.4;
+            line-height: 1.3;
         }
         #header .sound-btn:active {
             transform: scale(0.85);
@@ -488,14 +565,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: clamp(2px, 0.5vw, 6px) clamp(6px, 1.5vw, 12px) clamp(2px, 0.5vw, 6px) clamp(6px, 1.5vw, 12px);
+            padding: 2px 6px;
             min-height: 0;
             touch-action: none;
         }
         canvas {
             width: 100%;
             aspect-ratio: 1/1;
-            border-radius: clamp(10px, 2vw, 16px);
+            border-radius: 12px;
             background: #0f1a2e;
             box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5), 0 8px 40px rgba(0, 0, 0, 0.6);
             touch-action: none;
@@ -511,18 +588,18 @@
         #footer {
             display: flex;
             justify-content: space-between;
-            padding: clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) clamp(4px, 1vw, 10px) clamp(6px, 1.5vw, 12px);
+            padding: 2px 6px 4px 6px;
             flex-shrink: 0;
-            gap: clamp(3px, 0.8vw, 8px);
+            gap: 3px;
             background: linear-gradient(0deg, rgba(20, 20, 41, 0.95) 0%, transparent 100%);
         }
         #footer button {
             background: rgba(255, 255, 255, 0.06);
             border: none;
-            color: rgba(255, 255, 255, 0.6);
-            padding: clamp(4px, 1vw, 8px) clamp(6px, 1.5vw, 12px);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 3px 6px;
             border-radius: 30px;
-            font-size: clamp(8px, 1.5vw, 12px);
+            font-size: clamp(7px, 1vw, 11px);
             font-weight: 600;
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -553,7 +630,7 @@
             justify-content: center;
             align-items: center;
             z-index: 100;
-            padding: 16px;
+            padding: 14px;
             border-radius: 32px;
             animation: modalFade 0.3s ease;
         }
@@ -572,9 +649,9 @@
         }
         .modal-box {
             background: linear-gradient(160deg, #1e1e42, #141429);
-            border-radius: 24px;
-            padding: clamp(14px, 2.5vw, 24px) clamp(12px, 2vw, 20px);
-            max-width: 360px;
+            border-radius: 20px;
+            padding: 14px 12px;
+            max-width: 340px;
             width: 100%;
             max-height: 85vh;
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -590,23 +667,23 @@
         }
         .modal-box .modal-header h2 {
             color: #fff;
-            font-size: clamp(16px, 3vw, 22px);
+            font-size: clamp(14px, 2.5vw, 20px);
         }
         .modal-box .modal-header .source-badge {
-            font-size: clamp(7px, 1vw, 10px);
-            padding: 2px 8px;
+            font-size: clamp(6px, 0.8vw, 9px);
+            padding: 1px 6px;
             border-radius: 30px;
         }
         .modal-box .sub {
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.2);
             text-align: center;
-            font-size: clamp(9px, 1.5vw, 12px);
-            margin-bottom: 6px;
+            font-size: clamp(8px, 1.2vw, 11px);
+            margin-bottom: 4px;
         }
         .modal-box .tabs {
             display: flex;
-            gap: 4px;
-            margin-bottom: 6px;
+            gap: 3px;
+            margin-bottom: 4px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -614,9 +691,9 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
-            padding: 2px 10px;
+            padding: 2px 8px;
             color: rgba(255, 255, 255, 0.3);
-            font-size: clamp(8px, 1.2vw, 11px);
+            font-size: clamp(7px, 1vw, 10px);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -633,19 +710,19 @@
         .modal-box .list {
             overflow-y: auto;
             flex: 1;
-            max-height: 35vh;
+            max-height: 30vh;
         }
         .modal-box .list .item {
             display: flex;
             justify-content: space-between;
-            padding: clamp(3px, 0.8vw, 6px) 4px;
+            padding: 3px 4px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: clamp(10px, 1.8vw, 13px);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: clamp(9px, 1.5vw, 12px);
         }
         .modal-box .list .item .rank {
             font-weight: 600;
-            width: 28px;
+            width: 24px;
             color: rgba(255, 255, 255, 0.2);
         }
         .modal-box .list .item .rank.gold {
@@ -668,24 +745,24 @@
         .modal-box .empty {
             color: rgba(255, 255, 255, 0.15);
             text-align: center;
-            padding: 16px 0;
-            font-size: 12px;
+            padding: 12px 0;
+            font-size: 11px;
         }
         .modal-box .loading {
             color: rgba(255, 255, 255, 0.2);
             text-align: center;
-            padding: 16px 0;
-            font-size: 12px;
+            padding: 12px 0;
+            font-size: 11px;
         }
         .modal-box .close-btn {
             width: 100%;
-            margin-top: 8px;
-            padding: clamp(8px, 1.5vw, 12px);
+            margin-top: 6px;
+            padding: 6px 10px;
             background: rgba(255, 255, 255, 0.06);
             border: none;
             border-radius: 30px;
             color: #fff;
-            font-size: clamp(12px, 2vw, 15px);
+            font-size: clamp(10px, 1.5vw, 13px);
             font-weight: 600;
             cursor: pointer;
             touch-action: manipulation;
@@ -695,32 +772,31 @@
             transform: scale(0.94);
         }
 
-        /* ===== МОДАЛ КАСТОМИЗАЦИИ ===== */
         .customize-options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin-bottom: 6px;
         }
         .customize-options .option-group {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
         .customize-options .option-group label {
             color: rgba(255, 255, 255, 0.3);
-            font-size: clamp(9px, 1.2vw, 11px);
+            font-size: clamp(8px, 1vw, 10px);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .customize-options .color-picker {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
         }
         .customize-options .color-picker .color-option {
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
@@ -736,15 +812,15 @@
         }
         .customize-options .theme-options {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
         }
         .customize-options .theme-options .theme-option {
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             color: rgba(255, 255, 255, 0.3);
-            font-size: clamp(9px, 1.2vw, 11px);
+            font-size: clamp(8px, 1vw, 10px);
             cursor: pointer;
             transition: all 0.2s;
             touch-action: manipulation;
@@ -757,6 +833,31 @@
             border-color: #e94560;
             color: #fff;
             background: rgba(233, 69, 96, 0.12);
+        }
+
+        .stats-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+        .stats-detail .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 4px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .stats-detail .stat-card .num {
+            color: #fff;
+            font-size: clamp(14px, 2vw, 18px);
+            font-weight: 700;
+        }
+        .stats-detail .stat-card .label {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: clamp(6px, 0.8vw, 8px);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         /* ===== ОКНО ЗАВЕРШЕНИЯ ===== */
@@ -777,60 +878,60 @@
         }
         #gameOverModal .gameover-box {
             background: linear-gradient(160deg, #1e1e42, #141429);
-            border-radius: 24px;
-            padding: 24px 20px 20px 20px;
-            max-width: 320px;
+            border-radius: 20px;
+            padding: 18px 16px 16px 16px;
+            max-width: 300px;
             width: 90%;
             border: 1px solid rgba(255, 255, 255, 0.06);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
             text-align: center;
         }
         #gameOverModal .gameover-icon {
-            font-size: 48px;
-            margin-bottom: 4px;
+            font-size: 40px;
+            margin-bottom: 2px;
         }
         #gameOverModal .gameover-box h2 {
             color: #fff;
-            font-size: 22px;
+            font-size: 20px;
             margin-bottom: 2px;
         }
         #gameOverModal .gameover-score {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 2px;
         }
         #gameOverModal .gameover-score span {
             color: #f1c40f;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 18px;
         }
         #gameOverModal .gameover-best {
             color: rgba(255, 255, 255, 0.3);
-            font-size: 13px;
-            margin-bottom: 16px;
+            font-size: 12px;
+            margin-bottom: 12px;
         }
         #gameOverModal .gameover-best span {
             color: #fff;
             font-weight: 600;
         }
         #gameOverModal .gameover-achievements {
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         #gameOverModal .gameover-achievements span {
             color: #f1c40f;
         }
         #gameOverModal .gameover-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
         #gameOverModal .gameover-btn {
             flex: 1;
-            padding: 10px 12px;
+            padding: 8px 10px;
             border: none;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
             touch-action: manipulation;
@@ -853,15 +954,15 @@
         /* ===== УВЕДОМЛЕНИЯ ===== */
         #notification {
             position: absolute;
-            top: 60px;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 30px;
             color: #fff;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             z-index: 300;
             opacity: 0;
@@ -883,7 +984,7 @@
             }
             #menu {
                 border-radius: 0;
-                padding: 10px 8px;
+                padding: 8px 6px;
             }
             .modal-overlay {
                 border-radius: 0;
@@ -897,129 +998,149 @@
                 font-size: clamp(20px, 4vw, 28px);
             }
             #menu .logo-sub {
-                font-size: 7px;
-                margin-bottom: 3px;
+                font-size: 6px;
+                margin-bottom: 2px;
             }
             #menu .mode-btn {
-                padding: 3px 2px;
+                padding: 2px 2px;
             }
             #menu .mode-btn .icon {
                 font-size: 14px;
             }
             #menu .mode-btn .label {
-                font-size: 8px;
+                font-size: 7px;
             }
             #menu .mode-btn .sub {
-                font-size: 6px;
+                font-size: 5px;
             }
             #menu .mode-btn .best-score {
-                font-size: 7px;
+                font-size: 6px;
             }
             #menu .mode-grid {
                 gap: 3px;
-                margin-bottom: 4px;
+                margin-bottom: 3px;
                 max-width: 260px;
             }
             #menu .play-btn {
-                padding: 6px 16px;
-                font-size: 13px;
+                padding: 5px 14px;
+                font-size: 12px;
             }
             #menu .nick-input {
                 padding: 4px 10px;
-                font-size: 11px;
-            }
-            #menu .user-section {
-                gap: 6px;
-                margin-bottom: 3px;
-            }
-            #menu .stats .stat-item {
-                padding: 1px 6px;
-            }
-            #menu .stats .stat-item .num {
                 font-size: 10px;
             }
+            #menu .user-section {
+                gap: 4px;
+                margin-bottom: 2px;
+            }
+            #menu .stats .stat-item {
+                padding: 1px 4px;
+            }
+            #menu .stats .stat-item .num {
+                font-size: 9px;
+            }
             #menu .stats .stat-item .label {
-                font-size: 5px;
+                font-size: 4px;
             }
             #header {
                 padding: 2px 6px 1px 6px;
                 min-height: 22px;
             }
             #header .badge {
-                font-size: 8px;
+                font-size: 7px;
                 padding: 1px 4px;
             }
             #header .timer {
-                font-size: 8px;
+                font-size: 7px;
                 padding: 1px 3px;
                 min-width: 22px;
             }
             #header .logo-small {
-                font-size: 9px;
+                font-size: 8px;
             }
             #header .mode-label {
-                font-size: 6px;
+                font-size: 5px;
                 padding: 0 4px;
             }
             #header .sound-btn {
-                font-size: 10px;
+                font-size: 9px;
                 padding: 0 4px;
             }
             #footer {
-                padding: 2px 4px 4px 4px;
-                gap: 3px;
+                padding: 2px 4px 3px 4px;
+                gap: 2px;
             }
             #footer button {
-                font-size: 8px;
-                padding: 3px 5px;
+                font-size: 7px;
+                padding: 2px 4px;
             }
             .canvas-wrap {
                 padding: 2px 4px;
             }
             #gameOverModal .gameover-box {
-                padding: 16px 12px 12px 12px;
+                padding: 14px 10px 10px 10px;
             }
             #gameOverModal .gameover-icon {
-                font-size: 36px;
+                font-size: 32px;
             }
             #gameOverModal .gameover-box h2 {
-                font-size: 18px;
+                font-size: 16px;
             }
             #gameOverModal .gameover-score {
-                font-size: 14px;
-            }
-            #gameOverModal .gameover-btn {
-                padding: 8px 10px;
                 font-size: 12px;
             }
-            #notification {
-                top: 40px;
+            #gameOverModal .gameover-btn {
+                padding: 6px 8px;
                 font-size: 11px;
-                padding: 4px 14px;
+            }
+            #notification {
+                top: 35px;
+                font-size: 10px;
+                padding: 4px 12px;
             }
             .customize-options .color-picker .color-option {
-                width: 22px;
-                height: 22px;
+                width: 18px;
+                height: 18px;
+            }
+            .stats-detail {
+                grid-template-columns: 1fr 1fr;
+                gap: 3px;
+            }
+            #menu .daily-bonus {
+                padding: 2px 10px;
+                font-size: 8px;
+            }
+            #menu .tournament-banner {
+                padding: 2px 10px;
+                font-size: 8px;
+            }
+            #menu .invite-section input {
+                font-size: 7px;
+                padding: 2px 8px;
+            }
+            #menu .invite-section .invite-btn {
+                font-size: 7px;
+                padding: 2px 8px;
             }
         }
         @media (pointer: coarse) {
             #menu .mode-btn {
-                padding: clamp(8px, 2vw, 14px) clamp(3px, 0.8vw, 6px);
+                padding: 4px 3px;
             }
             #menu .play-btn {
-                padding: clamp(10px, 2.5vw, 16px) clamp(20px, 4vw, 30px);
-                font-size: clamp(14px, 3vw, 18px);
+                padding: 8px 20px;
+                font-size: 14px;
             }
             #menu .nick-input {
-                padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2vw, 16px);
-                font-size: clamp(12px, 2vw, 15px);
+                padding: 6px 12px;
+                font-size: 13px;
             }
             #footer button {
-                padding: clamp(6px, 1.5vw, 10px) clamp(8px, 2vw, 12px);
+                padding: 4px 6px;
             }
             .modal-box .tab-btn {
-                padding: 4px 10px;
-                font-size: clamp(9px, 1.5vw, 12px);
+                padding: 3px 8px;
+                font-size: 9px;
             }
         }
     </style>
@@ -1033,7 +1154,7 @@
         <!-- ===== МЕНЮ ===== -->
         <div id="menu">
             <div class="logo">✦ 3 в ряд</div>
-            <div class="logo-sub">делюкс</div>
+            <div class="logo-sub">премиум</div>
 
             <div class="user-section">
                 <input class="nick-input" id="nickInput" type="text" placeholder="Никнейм" maxlength="20" value="Admin">
@@ -1085,7 +1206,7 @@
                     <span class="icon">📐</span>
                     <div class="label">Размер поля</div>
                     <div class="sub" id="sizeSelector">8×8</div>
-                    <div class="best-score" style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:2px;">нажми чтобы сменить</div>
+                    <div style="font-size:6px;color:rgba(255,255,255,0.15);margin-top:1px;">нажми сменить</div>
                 </div>
             </div>
 
@@ -1095,14 +1216,26 @@
                 <span id="menuRecordsBtn">🏆 Рекорды</span>
                 <span id="menuOnlineBtn">🌐 Топ-100</span>
                 <span id="menuAchievementsBtn">🎖️ Достижения</span>
-                <span id="menuCustomizeBtn">🎨 Кастомизация</span>
+                <span id="menuStatsBtn">📊 Статистика</span>
+                <span id="menuTournamentBtn">🏆 Турниры</span>
+                <span id="menuCustomizeBtn">🎨</span>
             </div>
 
-            <!-- ===== ЕЖЕДНЕВНЫЙ БОНУС ===== -->
+            <div class="tournament-banner" id="tournamentBanner">
+                <span class="tournament-icon">🏆</span>
+                <span class="tournament-text" id="tournamentText">Турнир заканчивается:</span>
+                <span class="tournament-timer" id="tournamentTimer">--:--</span>
+            </div>
+
             <div class="daily-bonus" id="dailyBonus">
                 <span class="bonus-icon">🎁</span>
                 <span class="bonus-text" id="bonusText">Ежедневный бонус!</span>
                 <span class="bonus-timer" id="bonusTimer"></span>
+            </div>
+
+            <div class="invite-section">
+                <input id="inviteInput" type="text" placeholder="Код приглашения...">
+                <button class="invite-btn" id="inviteBtn">▶</button>
             </div>
 
             <div class="achievements-preview" id="achievementsPreview"></div>
@@ -1111,6 +1244,7 @@
                 <div class="stat-item"><div class="num" id="statGames">0</div><div class="label">Игр</div></div>
                 <div class="stat-item"><div class="num" id="statBest">0</div><div class="label">Лучший</div></div>
                 <div class="stat-item"><div class="num" id="statLevel">1</div><div class="label">Уровень</div></div>
+                <div class="stat-item"><div class="num" id="statTournamentRank">-</div><div class="label">Турнир</div></div>
             </div>
 
             <div class="status" id="connectionStatus">⏳ Подключение...</div>
@@ -1138,6 +1272,7 @@
             <button id="footerRecordsBtn">🏆</button>
             <button id="footerOnlineBtn">🌐</button>
             <button id="footerAchievementsBtn">🎖️</button>
+            <button id="footerStatsBtn">📊</button>
             <button id="restartBtn">🔄</button>
             <button class="primary" id="homeBtn">🏠</button>
         </div>
@@ -1159,6 +1294,19 @@
                 </div>
                 <div class="list" id="recordsList"></div>
                 <button class="close-btn" id="modalCloseBtn">✕ Закрыть</button>
+            </div>
+        </div>
+
+        <!-- ===== МОДАЛ ДОСТИЖЕНИЙ ===== -->
+        <div class="modal-overlay" id="achievementsModal">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2>🎖️ Достижения</h2>
+                    <span class="source-badge" style="background:rgba(241,196,15,0.15);color:#f1c40f;">Прогресс</span>
+                </div>
+                <div class="sub" id="achSub">0 / 0 разблокировано</div>
+                <div class="list" id="achievementsList"></div>
+                <button class="close-btn" id="achievementsCloseBtn">✕ Закрыть</button>
             </div>
         </div>
 
@@ -1194,6 +1342,51 @@
             </div>
         </div>
 
+        <!-- ===== МОДАЛ СТАТИСТИКИ ===== -->
+        <div class="modal-overlay" id="statsModal">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2>📊 Статистика</h2>
+                    <span class="source-badge" style="background:rgba(46,204,113,0.15);color:#2ecc71;">Подробно</span>
+                </div>
+                <div class="sub" style="color:rgba(255,255,255,0.2);">все твои достижения</div>
+                <div class="stats-detail" id="statsDetail">
+                    <div class="stat-card"><div class="num" id="statDetailGames">0</div><div class="label">Всего игр</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailBest">0</div><div class="label">Лучший счёт</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailTotal">0</div><div class="label">Всего очков</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailCombo">0</div><div class="label">Макс комбо</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailBombs">0</div><div class="label">Бомб</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailRockets">0</div><div class="label">Ракет</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailDaily">0</div><div class="label">Бонусов</div></div>
+                    <div class="stat-card"><div class="num" id="statDetailStreak">0</div><div class="label">Стрик</div></div>
+                </div>
+                <button class="close-btn" id="statsCloseBtn">✕ Закрыть</button>
+            </div>
+        </div>
+
+        <!-- ===== МОДАЛ ТУРНИРОВ ===== -->
+        <div class="modal-overlay" id="tournamentModal">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2>🏆 Турниры</h2>
+                    <span class="source-badge" style="background:rgba(233,69,96,0.15);color:#e94560;">Соревнования</span>
+                </div>
+                <div class="sub" style="color:rgba(255,255,255,0.2);">соревнуйся с лучшими</div>
+                <div class="list" id="tournamentList">
+                    <div class="item" style="border-bottom:1px solid rgba(255,255,255,0.06);padding:6px 4px;text-align:center;color:rgba(255,255,255,0.3);font-size:12px;">
+                        ⏳ Турнир заканчивается через <span id="tournamentCountdown">--:--</span>
+                    </div>
+                    <div class="item" style="padding:6px 4px;text-align:center;color:rgba(255,255,255,0.2);font-size:11px;">
+                        🎁 Приз: <span id="tournamentPrize">1000</span> очков
+                    </div>
+                    <div class="item" style="padding:6px 4px;text-align:center;color:rgba(255,255,255,0.2);font-size:11px;">
+                        📊 Твоё место: <span id="tournamentUserRank">—</span>
+                    </div>
+                </div>
+                <button class="close-btn" id="tournamentCloseBtn">✕ Закрыть</button>
+            </div>
+        </div>
+
         <!-- ===== ОКНО ЗАВЕРШЕНИЯ ===== -->
         <div id="gameOverModal">
             <div class="gameover-box">
@@ -1218,34 +1411,37 @@
         // ============================================================
         (function createParticles() {
             const container = document.getElementById('bgParticles');
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 20; i++) {
                 const span = document.createElement('span');
                 span.style.left = Math.random() * 100 + '%';
-                span.style.width = span.style.height = (2 + Math.random() * 3) + 'px';
-                span.style.animationDuration = (15 + Math.random() * 25) + 's';
-                span.style.animationDelay = (Math.random() * 20) + 's';
+                span.style.width = span.style.height = (2 + Math.random() * 2) + 'px';
+                span.style.animationDuration = (15 + Math.random() * 20) + 's';
+                span.style.animationDelay = (Math.random() * 15) + 's';
                 container.appendChild(span);
             }
         })();
 
         // ============================================================
-        // 1. ЗВУКИ
+        // 1. ЗВУКИ (БЕЗ МУЗЫКИ)
         // ============================================================
         const SoundEngine = {
             ctx: null,
             enabled: true,
             initialized: false,
+
             init() {
                 if (this.initialized) return;
                 try {
                     this.ctx = new(window.AudioContext || window.webkitAudioContext)();
                     this.initialized = true;
-                } catch (e) {}
+                } catch (e) { /* тихо */ }
             },
+
             toggle() {
                 this.enabled = !this.enabled;
                 return this.enabled;
             },
+
             play(freq, dur, type = 'sine', vol = 0.3) {
                 if (!this.enabled || !this.initialized) return;
                 try {
@@ -1259,8 +1455,9 @@
                     gain.connect(this.ctx.destination);
                     osc.start();
                     osc.stop(this.ctx.currentTime + dur);
-                } catch (e) {}
+                } catch (e) { /* тихо */ }
             },
+
             click() { this.play(600, 0.1, 'sine', 0.2); },
             select() { this.play(600, 0.08, 'sine', 0.15); },
             swap() { this.play(800, 0.1, 'sine', 0.2);
@@ -1286,36 +1483,31 @@
                 setTimeout(() => this.play(900, 0.3, 'sine', 0.25), 350); },
             dailyBonus() { for (let i = 0; i < 4; i++) { setTimeout(() => { this.play(600 + i * 100, 0.1, 'sine',
                         0.15); }, i * 80); }
-                setTimeout(() => this.play(900, 0.4, 'sine', 0.3), 320); }
+                setTimeout(() => this.play(900, 0.4, 'sine', 0.3), 320); },
+            tournament() { for (let i = 0; i < 4; i++) { setTimeout(() => { this.play(400 + i * 120, 0.1, 'square',
+                        0.1); }, i * 100); }
+                setTimeout(() => this.play(880, 0.4, 'sine', 0.3), 400); }
         };
 
         // ============================================================
         // 2. ДОСТИЖЕНИЯ
         // ============================================================
         const ACHIEVEMENTS = [
-            { id: 'first_game', name: 'Первый шаг', desc: 'Сыграть первую игру', icon: '👣', check: s => s.games >=
-                1 },
-            { id: 'score_100', name: '100 очков', desc: 'Набрать 100 очков', icon: '💯', check: s => s.bestScore >=
-                100 },
-            { id: 'score_500', name: '500 очков', desc: 'Набрать 500 очков', icon: '🔥', check: s => s.bestScore >=
-                500 },
-            { id: 'score_1000', name: '1000 очков', desc: 'Набрать 1000 очков', icon: '🏆', check: s => s.bestScore >=
-                1000 },
-            { id: 'games_10', name: '10 игр', desc: 'Сыграть 10 игр', icon: '🎮', check: s => s.games >= 10 },
-            { id: 'games_50', name: '50 игр', desc: 'Сыграть 50 игр', icon: '👑', check: s => s.games >= 50 },
-            { id: 'combo_5', name: 'Комбо 5', desc: 'Собрать комбо из 5', icon: '⚡', check: s => s.maxCombo >= 5 },
-            { id: 'combo_10', name: 'Комбо 10', desc: 'Собрать комбо из 10', icon: '💥', check: s => s.maxCombo >=
-                10 },
-            { id: 'bomb_first', name: 'Первая бомба', desc: 'Собрать бомбу (4 в ряд)', icon: '💣', check: s => s
-                    .bombsCollected >= 1 },
-            { id: 'rocket_first', name: 'Первая ракета', desc: 'Собрать ракету (5 в ряд)', icon: '🚀', check: s => s
-                    .rocketsCollected >= 1 },
-            { id: 'daily_bonus', name: 'Ежедневный бонус', desc: 'Забрать ежедневный бонус', icon: '🎁', check: s =>
-                    s.dailyBonusCollected >= 1 },
-            { id: 'daily_streak_3', name: 'Стрик 3 дня', desc: 'Забирать бонус 3 дня подряд', icon: '🔥', check: s =>
-                    s.dailyStreak >= 3 },
-            { id: 'daily_streak_7', name: 'Стрик 7 дней', desc: 'Забирать бонус 7 дней подряд', icon: '👑', check: s =>
-                    s.dailyStreak >= 7 },
+            { id: 'first_game', name: 'Первый шаг', icon: '👣', check: s => s.games >= 1 },
+            { id: 'score_100', name: '100 очков', icon: '💯', check: s => s.bestScore >= 100 },
+            { id: 'score_500', name: '500 очков', icon: '🔥', check: s => s.bestScore >= 500 },
+            { id: 'score_1000', name: '1000 очков', icon: '🏆', check: s => s.bestScore >= 1000 },
+            { id: 'games_10', name: '10 игр', icon: '🎮', check: s => s.games >= 10 },
+            { id: 'games_50', name: '50 игр', icon: '👑', check: s => s.games >= 50 },
+            { id: 'combo_5', name: 'Комбо 5', icon: '⚡', check: s => s.maxCombo >= 5 },
+            { id: 'combo_10', name: 'Комбо 10', icon: '💥', check: s => s.maxCombo >= 10 },
+            { id: 'bomb_first', name: 'Первая бомба', icon: '💣', check: s => s.bombsCollected >= 1 },
+            { id: 'rocket_first', name: 'Первая ракета', icon: '🚀', check: s => s.rocketsCollected >= 1 },
+            { id: 'daily_bonus', name: 'Ежедневный бонус', icon: '🎁', check: s => s.dailyBonusCollected >= 1 },
+            { id: 'daily_streak_3', name: 'Стрик 3 дня', icon: '🔥', check: s => s.dailyStreak >= 3 },
+            { id: 'daily_streak_7', name: 'Стрик 7 дней', icon: '👑', check: s => s.dailyStreak >= 7 },
+            { id: 'tournament_win', name: 'Победа в турнире', icon: '🏆', check: s => s.tournamentWins >= 1 },
+            { id: 'invite_friend', name: 'Пригласи друга', icon: '🤝', check: s => s.invitesSent >= 1 },
         ];
 
         function getAchievements() {
@@ -1332,7 +1524,7 @@
             const ach = ACHIEVEMENTS.find(a => a.id === id);
             if (ach) {
                 SoundEngine.achievement();
-                showNotification('🎖️ Достижение разблокировано: ' + ach.icon + ' ' + ach.name);
+                showNotification('🎖️ ' + ach.icon + ' ' + ach.name);
                 updateAchievementsUI();
             }
             return true;
@@ -1353,30 +1545,23 @@
             container.innerHTML = ACHIEVEMENTS.map(a =>
                 `<span class="ach-badge ${isAchievementUnlocked(a.id) ? 'unlocked' : ''}">${a.icon}</span>`
             ).join('');
+            document.getElementById('achSub').textContent = getUnlockedCount() + ' / ' + ACHIEVEMENTS.length +
+            ' разблокировано';
         }
 
         function showAchievementModal() {
-            const container = document.getElementById('recordsList');
-            const title = document.getElementById('modalTitle');
-            const badge = document.getElementById('modalSourceBadge');
-            const sub = document.getElementById('modalSub');
-            title.textContent = '🎖️ Достижения';
-            badge.textContent = '🏅 Прогресс';
-            badge.style.background = 'rgba(241,196,15,0.15)';
-            badge.style.color = '#f1c40f';
-            sub.textContent = getUnlockedCount() + ' / ' + ACHIEVEMENTS.length + ' разблокировано';
-
+            const container = document.getElementById('achievementsList');
             let html = '';
             ACHIEVEMENTS.forEach(a => {
                 const unlocked = isAchievementUnlocked(a.id);
                 html += `<div class="item" style="${unlocked ? 'color: rgba(255,255,255,0.8);' : 'color: rgba(255,255,255,0.2);'}">
-                            <span style="font-size:20px;">${a.icon}</span>
-                            <span class="nick">${a.name}</span>
-                            <span class="val">${unlocked ? '✅' : '🔒'}</span>
-                        </div>`;
+                                <span style="font-size:18px;">${a.icon}</span>
+                                <span class="nick">${a.name}</span>
+                                <span class="val">${unlocked ? '✅' : '🔒'}</span>
+                            </div>`;
             });
             container.innerHTML = html;
-            document.getElementById('recordsModal').classList.add('open');
+            document.getElementById('achievementsModal').classList.add('open');
         }
 
         // ============================================================
@@ -1392,23 +1577,19 @@
         function checkDailyBonus() {
             const data = getDailyBonus();
             const now = Date.now();
-            const last = data.lastClaim;
             const oneDay = 24 * 60 * 60 * 1000;
 
-            // Проверяем, можно ли забрать бонус
-            const canClaim = (now - last) >= oneDay;
-            const isNewDay = (now - last) >= oneDay;
+            const canClaim = (now - data.lastClaim) >= oneDay;
+            const isNewDay = (now - data.lastClaim) >= oneDay;
 
-            // Обновляем стрик
-            if (isNewDay && (now - last) < oneDay * 2) {
+            if (isNewDay && (now - data.lastClaim) < oneDay * 2) {
                 data.streak += 1;
             } else if (isNewDay) {
                 data.streak = 1;
             }
 
-            // Если бонус не забран, показываем таймер
             if (!canClaim) {
-                const remaining = oneDay - (now - last);
+                const remaining = oneDay - (now - data.lastClaim);
                 const hours = Math.floor(remaining / (60 * 60 * 1000));
                 const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
                 document.getElementById('bonusText').textContent = 'Бонус через:';
@@ -1418,7 +1599,7 @@
             }
 
             document.getElementById('bonusText').textContent = '🎁 Забрать бонус!';
-            document.getElementById('bonusTimer').textContent = '🔥 ' + data.streak + ' дней';
+            document.getElementById('bonusTimer').textContent = '🔥 ' + data.streak + ' дн.';
             document.getElementById('dailyBonus').classList.remove('claimed');
             return true;
         }
@@ -1429,11 +1610,10 @@
             const oneDay = 24 * 60 * 60 * 1000;
 
             if ((now - data.lastClaim) < oneDay) {
-                showNotification('⏳ Бонус уже получен сегодня!');
+                showNotification('⏳ Бонус уже получен!');
                 return;
             }
 
-            // Проверяем стрик
             if ((now - data.lastClaim) < oneDay * 2) {
                 data.streak += 1;
             } else {
@@ -1443,7 +1623,6 @@
             data.lastClaim = now;
             saveDailyBonus(data);
 
-            // Начисляем бонусные очки
             const bonus = Math.min(50 + data.streak * 10, 200);
             const stats = getStats();
             stats.totalScore += bonus;
@@ -1451,13 +1630,12 @@
             stats.dailyStreak = data.streak;
             saveStats(stats);
 
-            // Проверяем достижения
             if (stats.dailyBonusCollected >= 1) unlockAchievement('daily_bonus');
             if (stats.dailyStreak >= 3) unlockAchievement('daily_streak_3');
             if (stats.dailyStreak >= 7) unlockAchievement('daily_streak_7');
 
             SoundEngine.dailyBonus();
-            showNotification('🎁 +' + bonus + ' бонусных очков! Стрик: ' + data.streak + ' дней');
+            showNotification('🎁 +' + bonus + ' очков! Стрик: ' + data.streak + ' дн.');
 
             updateMenuBestScores();
             renderStats();
@@ -1467,7 +1645,111 @@
         }
 
         // ============================================================
-        // 4. КАСТОМИЗАЦИЯ
+        // 4. ТУРНИРЫ
+        // ============================================================
+        function getTournament() {
+            try { return JSON.parse(localStorage.getItem('tournament')) || { startTime: 0, scores: {}, prize: 1000 }; } catch {
+                return { startTime: 0, scores: {}, prize: 1000 }; }
+        }
+
+        function saveTournament(data) { localStorage.setItem('tournament', JSON.stringify(data)); }
+
+        function checkTournament() {
+            const data = getTournament();
+            const now = Date.now();
+            const week = 7 * 24 * 60 * 60 * 1000;
+
+            if (data.startTime === 0 || (now - data.startTime) > week) {
+                data.startTime = now;
+                data.scores = {};
+                data.prize = 1000 + Math.floor(Math.random() * 500);
+                saveTournament(data);
+            }
+
+            const endTime = data.startTime + week;
+            const remaining = endTime - now;
+
+            if (remaining <= 0) {
+                let winner = null;
+                let bestScore = 0;
+                for (const [name, score] of Object.entries(data.scores)) {
+                    if (score > bestScore) {
+                        bestScore = score;
+                        winner = name;
+                    }
+                }
+                if (winner && winner === currentNickname) {
+                    const stats = getStats();
+                    stats.tournamentWins = (stats.tournamentWins || 0) + 1;
+                    saveStats(stats);
+                    unlockAchievement('tournament_win');
+                    SoundEngine.tournament();
+                    showNotification('🏆 Ты победил в турнире! +' + data.prize + ' очков!');
+                    stats.totalScore += data.prize;
+                    saveStats(stats);
+                }
+                data.startTime = now;
+                data.scores = {};
+                data.prize = 1000 + Math.floor(Math.random() * 500);
+                saveTournament(data);
+                document.getElementById('tournamentText').textContent = 'Турнир начался!';
+                document.getElementById('tournamentTimer').textContent = '7 дн.';
+                return;
+            }
+
+            const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
+            const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            document.getElementById('tournamentText').textContent = 'Турнир заканчивается:';
+            if (days > 0) {
+                document.getElementById('tournamentTimer').textContent = days + 'д ' + hours + 'ч';
+            } else {
+                document.getElementById('tournamentTimer').textContent = hours + 'ч';
+            }
+        }
+
+        function updateTournamentScore(score) {
+            const data = getTournament();
+            const nick = currentNickname || 'Игрок';
+            if (data.scores[nick] === undefined) data.scores[nick] = 0;
+            if (score > data.scores[nick]) {
+                data.scores[nick] = score;
+                saveTournament(data);
+                updateTournamentRank();
+            }
+        }
+
+        function updateTournamentRank() {
+            const data = getTournament();
+            const nick = currentNickname || 'Игрок';
+            const sorted = Object.entries(data.scores).sort((a, b) => b[1] - a[1]);
+            let rank = 1;
+            for (const [name] of sorted) {
+                if (name === nick) {
+                    document.getElementById('statTournamentRank').textContent = '#' + rank;
+                    document.getElementById('tournamentUserRank').textContent = '#' + rank + ' (' + (data.scores[nick] || 0) +
+                        ' оч.)';
+                    return;
+                }
+                rank++;
+            }
+            document.getElementById('statTournamentRank').textContent = '-';
+            document.getElementById('tournamentUserRank').textContent = '—';
+        }
+
+        function showTournamentModal() {
+            document.getElementById('tournamentModal').classList.add('open');
+            const data = getTournament();
+            const endTime = data.startTime + 7 * 24 * 60 * 60 * 1000;
+            const remaining = endTime - Date.now();
+            const days = Math.floor(remaining / (24 * 60 * 60 * 1000));
+            const hours = Math.floor((remaining % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            document.getElementById('tournamentCountdown').textContent = days + 'д ' + hours + 'ч';
+            document.getElementById('tournamentPrize').textContent = data.prize || 1000;
+            updateTournamentRank();
+        }
+
+        // ============================================================
+        // 5. КАСТОМИЗАЦИЯ
         // ============================================================
         function getCustomization() {
             try { return JSON.parse(localStorage.getItem('customization')) || { color: 'red', theme: 'dark' }; } catch {
@@ -1480,7 +1762,6 @@
             const custom = getCustomization();
             const app = document.getElementById('app');
 
-            // Тема
             const bgColors = {
                 dark: 'linear-gradient(145deg, #141429, #1a1a3e)',
                 light: 'linear-gradient(145deg, #f0f0f0, #ffffff)',
@@ -1488,7 +1769,6 @@
             };
             app.style.background = bgColors[custom.theme] || bgColors.dark;
 
-            // Цвет фишек (будет использован в draw)
             const colors = {
                 red: ['#e94560', '#c73652'],
                 blue: ['#3498db', '#2980b9'],
@@ -1498,7 +1778,6 @@
             };
             window.customColor = colors[custom.color] || colors.red;
 
-            // Обновляем активные элементы в UI
             document.querySelectorAll('.color-option').forEach(el => {
                 el.classList.toggle('active', el.dataset.color === custom.color);
             });
@@ -1508,7 +1787,112 @@
         }
 
         // ============================================================
-        // 5. БЭКЕНД (Google Sheets)
+        // 6. ПРИГЛАШЕНИЯ
+        // ============================================================
+        function getInvites() {
+            try { return JSON.parse(localStorage.getItem('invites')) || { sent: 0 }; } catch { return { sent: 0 }; }
+        }
+
+        function saveInvites(data) { localStorage.setItem('invites', JSON.stringify(data)); }
+
+        function applyInvite(code) {
+            if (!code || code.length < 4) {
+                showNotification('⚠️ Неверный код!');
+                return;
+            }
+            const stats = getStats();
+            stats.totalScore += 50;
+            stats.invitesSent = (stats.invitesSent || 0) + 1;
+            saveStats(stats);
+            unlockAchievement('invite_friend');
+            showNotification('✅ Код применён! +50 очков!');
+            updateMenuBestScores();
+            renderStats();
+            updateLevel();
+        }
+
+        // ============================================================
+        // 7. СТАТИСТИКА
+        // ============================================================
+        function getStats() {
+            try {
+                return JSON.parse(localStorage.getItem('game_stats_v4')) || {
+                    games: 0,
+                    totalScore: 0,
+                    bestScore: 0,
+                    maxCombo: 0,
+                    bombsCollected: 0,
+                    rocketsCollected: 0,
+                    dailyBonusCollected: 0,
+                    dailyStreak: 0,
+                    tournamentWins: 0,
+                    invitesSent: 0
+                };
+            } catch { return {
+                games: 0,
+                totalScore: 0,
+                bestScore: 0,
+                maxCombo: 0,
+                bombsCollected: 0,
+                rocketsCollected: 0,
+                dailyBonusCollected: 0,
+                dailyStreak: 0,
+                tournamentWins: 0,
+                invitesSent: 0
+            }; }
+        }
+
+        function saveStats(stats) { localStorage.setItem('game_stats_v4', JSON.stringify(stats)); }
+
+        function updateStats(score, combo, bombs, rockets) {
+            const stats = getStats();
+            stats.games++;
+            stats.totalScore += score;
+            if (score > stats.bestScore) stats.bestScore = score;
+            if (combo > stats.maxCombo) stats.maxCombo = combo;
+            stats.bombsCollected += bombs || 0;
+            stats.rocketsCollected += rockets || 0;
+            saveStats(stats);
+
+            updateTournamentScore(score);
+
+            ACHIEVEMENTS.forEach(a => {
+                if (a.check(stats)) unlockAchievement(a.id);
+            });
+
+            renderStats();
+            updateAchievementsUI();
+            updateLevel();
+            updateTournamentRank();
+        }
+
+        function renderStats() {
+            const stats = getStats();
+            document.getElementById('statGames').textContent = stats.games;
+            document.getElementById('statBest').textContent = stats.bestScore;
+        }
+
+        function updateLevel() {
+            const stats = getStats();
+            const level = Math.floor(stats.totalScore / 100) + 1;
+            document.getElementById('statLevel').textContent = level;
+        }
+
+        function showStatsModal() {
+            const stats = getStats();
+            document.getElementById('statDetailGames').textContent = stats.games;
+            document.getElementById('statDetailBest').textContent = stats.bestScore;
+            document.getElementById('statDetailTotal').textContent = stats.totalScore;
+            document.getElementById('statDetailCombo').textContent = stats.maxCombo;
+            document.getElementById('statDetailBombs').textContent = stats.bombsCollected;
+            document.getElementById('statDetailRockets').textContent = stats.rocketsCollected;
+            document.getElementById('statDetailDaily').textContent = stats.dailyBonusCollected || 0;
+            document.getElementById('statDetailStreak').textContent = stats.dailyStreak || 0;
+            document.getElementById('statsModal').classList.add('open');
+        }
+
+        // ============================================================
+        // 8. БЭКЕНД (Google Sheets)
         // ============================================================
         const BACKEND_URL =
             "https://script.google.com/macros/s/AKfycbxHQTE0IONZmWNgqkvwGKd51qRh6jrBMTyHkVjgtahYpX3yl43qNHAD1yniAUTlU3eM/exec";
@@ -1521,13 +1905,13 @@
                 const response = await fetch(BACKEND_URL);
                 if (response.ok) {
                     onlineEnabled = true;
-                    document.getElementById('connectionStatus').textContent = '✅ Онлайн режим активен';
+                    document.getElementById('connectionStatus').textContent = '✅ Онлайн';
                     document.getElementById('connectionStatus').className = 'status';
                     return true;
                 }
             } catch (e) {
                 onlineEnabled = false;
-                document.getElementById('connectionStatus').textContent = '⚠️ Офлайн режим';
+                document.getElementById('connectionStatus').textContent = '⚠️ Офлайн';
                 document.getElementById('connectionStatus').className = 'status offline';
                 return false;
             }
@@ -1570,57 +1954,13 @@
         }
 
         // ============================================================
-        // 6. СТАТИСТИКА
-        // ============================================================
-        function getStats() {
-            try {
-                return JSON.parse(localStorage.getItem('game_stats_v2')) || { games: 0, totalScore: 0, bestScore: 0,
-                    maxCombo: 0, bombsCollected: 0, rocketsCollected: 0, dailyBonusCollected: 0, dailyStreak: 0 };
-            } catch { return { games: 0, totalScore: 0, bestScore: 0, maxCombo: 0, bombsCollected: 0,
-                    rocketsCollected: 0, dailyBonusCollected: 0, dailyStreak: 0 }; }
-        }
-
-        function saveStats(stats) { localStorage.setItem('game_stats_v2', JSON.stringify(stats)); }
-
-        function updateStats(score, combo, bombs, rockets) {
-            const stats = getStats();
-            stats.games++;
-            stats.totalScore += score;
-            if (score > stats.bestScore) stats.bestScore = score;
-            if (combo > stats.maxCombo) stats.maxCombo = combo;
-            stats.bombsCollected += bombs || 0;
-            stats.rocketsCollected += rockets || 0;
-            saveStats(stats);
-
-            ACHIEVEMENTS.forEach(a => {
-                if (a.check(stats)) unlockAchievement(a.id);
-            });
-
-            renderStats();
-            updateAchievementsUI();
-            updateLevel();
-        }
-
-        function renderStats() {
-            const stats = getStats();
-            document.getElementById('statGames').textContent = stats.games;
-            document.getElementById('statBest').textContent = stats.bestScore;
-        }
-
-        function updateLevel() {
-            const stats = getStats();
-            const level = Math.floor(stats.totalScore / 100) + 1;
-            document.getElementById('statLevel').textContent = level;
-        }
-
-        // ============================================================
-        // 7. РЕКОРДЫ
+        // 9. РЕКОРДЫ
         // ============================================================
         function getLocalRecords() {
-            try { return JSON.parse(localStorage.getItem('game_records_v6')) || {}; } catch { return {}; }
+            try { return JSON.parse(localStorage.getItem('game_records_v8')) || {}; } catch { return {}; }
         }
 
-        function saveLocalRecords(data) { localStorage.setItem('game_records_v6', JSON.stringify(data)); }
+        function saveLocalRecords(data) { localStorage.setItem('game_records_v8', JSON.stringify(data)); }
 
         function addLocalRecord(mode, score) {
             let all = getLocalRecords();
@@ -1643,7 +1983,7 @@
         }
 
         // ============================================================
-        // 8. ИГРА
+        // 10. ИГРА
         // ============================================================
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -1671,9 +2011,9 @@
         let isGameOver = false;
         let currentSize = 8;
         let isEndlessMode = false;
-        let endlessLevel = 1;
         let hintHighlight = null;
         let hintTimeout = null;
+        let isNewRecord = false;
 
         const EMOJIS = ['🍎', '⭐', '🍒', '💎', '🍉'];
 
@@ -1689,6 +2029,8 @@
             updateAchievementsUI();
             updateLevel();
             checkDailyBonus();
+            checkTournament();
+            updateTournamentRank();
         }
 
         function hideMenu() {
@@ -1783,8 +2125,8 @@
             rocketsCollected = 0;
             swipeAnim = null;
             isGameOver = false;
-            endlessLevel = 1;
             hintHighlight = null;
+            isNewRecord = false;
             if (hintTimeout) clearTimeout(hintTimeout);
         }
 
@@ -2054,14 +2396,13 @@
         }
 
         // ============================================================
-        // 9. ОТРИСОВКА
+        // 11. ОТРИСОВКА
         // ============================================================
         function draw() {
             const size = currentSize;
             const tileSize = 400 / size;
             ctx.clearRect(0, 0, 400, 400);
 
-            // Фон
             for (let r = 0; r < size; r++) {
                 for (let c = 0; c < size; c++) {
                     const x = c * tileSize,
@@ -2071,7 +2412,6 @@
                 }
             }
 
-            // Обновляем анимации
             for (const a of dropAnims) a.progress = Math.min(a.progress + 0.04, 1);
             dropAnims = dropAnims.filter(a => a.progress < 1);
             for (const a of popAnims) a.progress += 0.06;
@@ -2084,7 +2424,6 @@
             }
             sparkles = sparkles.filter(s => s.life > 0);
 
-            // Собираем фишки
             const tiles = [];
             for (let r = 0; r < size; r++) {
                 for (let c = 0; c < size; c++) {
@@ -2099,7 +2438,6 @@
                 }
             }
 
-            // Анимация свайпа
             if (swipeAnim) {
                 swipeAnim.progress += 0.05;
                 if (swipeAnim.progress >= 1) {
@@ -2107,7 +2445,6 @@
                 }
             }
 
-            // Рисуем фишки
             const customColor = window.customColor || ['#e94560', '#c73652'];
             for (const tile of tiles) {
                 if (tile.value === null || tile.value === undefined) continue;
@@ -2118,7 +2455,6 @@
                 let opacity = 1;
                 let rotation = 0;
 
-                // Анимация падения
                 const drop = dropAnims.find(a => a.row === tile.row && a.col === tile.col);
                 if (drop) {
                     const progress = drop.progress;
@@ -2129,7 +2465,6 @@
                     rotation = (1 - ease) * 0.1;
                 }
 
-                // Анимация исчезновения
                 const pop = popAnims.find(a => a.row === tile.row && a.col === tile.col);
                 if (pop) {
                     const progress = pop.progress;
@@ -2138,7 +2473,6 @@
                     rotation = progress * 0.3;
                 }
 
-                // Анимация свайпа
                 let offsetX = 0,
                     offsetY = 0;
                 if (swipeAnim && swipeAnim.row === tile.row && swipeAnim.col === tile.col) {
@@ -2155,31 +2489,29 @@
                 ctx.rotate(rotation);
                 ctx.scale(scale, scale);
 
-                // Бонусная обводка
                 if (tile.type === 'bomb') {
                     ctx.shadowColor = '#e94560';
-                    ctx.shadowBlur = 25;
+                    ctx.shadowBlur = 20;
                     ctx.strokeStyle = '#e94560';
-                    ctx.lineWidth = 3;
+                    ctx.lineWidth = 2;
                     ctx.beginPath();
                     ctx.arc(0, 0, tileSize * 0.42, 0, Math.PI * 2);
                     ctx.stroke();
                     ctx.shadowBlur = 0;
                 } else if (tile.type === 'rocket') {
                     ctx.shadowColor = '#2ecc71';
-                    ctx.shadowBlur = 25;
+                    ctx.shadowBlur = 20;
                     ctx.strokeStyle = '#2ecc71';
-                    ctx.lineWidth = 3;
+                    ctx.lineWidth = 2;
                     ctx.beginPath();
                     ctx.arc(0, 0, tileSize * 0.42, 0, Math.PI * 2);
                     ctx.stroke();
                     ctx.shadowBlur = 0;
                 }
 
-                // Глянец с кастомным цветом
                 const radius = tileSize * 0.42;
                 const grad = ctx.createRadialGradient(-radius * 0.25, -radius * 0.25, 0, 0, 0, radius);
-                grad.addColorStop(0, 'rgba(255,255,255,0.25)');
+                grad.addColorStop(0, 'rgba(255,255,255,0.2)');
                 grad.addColorStop(0.5, 'rgba(255,255,255,0.05)');
                 grad.addColorStop(1, 'rgba(255,255,255,0)');
                 ctx.fillStyle = grad;
@@ -2187,60 +2519,56 @@
                 ctx.arc(0, 0, radius, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Эмодзи
                 ctx.font = (tileSize - 8) + 'px Arial';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.shadowColor = 'rgba(0,0,0,0.5)';
-                ctx.shadowBlur = 12;
-                ctx.shadowOffsetY = 2;
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetY = 1;
 
                 let emoji = EMOJIS[tile.value] || '❓';
                 if (tile.type === 'bomb') emoji = '💥';
                 else if (tile.type === 'rocket') emoji = '🚀';
 
                 ctx.fillStyle = '#ffffff';
-                ctx.fillText(emoji, 0, 2);
+                ctx.fillText(emoji, 0, 1);
                 ctx.shadowBlur = 0;
 
                 ctx.restore();
             }
 
-            // Искры
             for (const s of sparkles) {
                 ctx.save();
                 ctx.globalAlpha = s.life;
                 ctx.fillStyle = s.color;
                 ctx.shadowColor = s.color;
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 10;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.restore();
             }
 
-            // Подсказка хода
             if (hintHighlight && gameActive) {
                 const { row, col } = hintHighlight;
                 ctx.save();
                 ctx.globalAlpha = 0.3 + Math.sin(Date.now() / 300) * 0.15;
                 ctx.fillStyle = '#f1c40f';
                 ctx.shadowColor = '#f1c40f';
-                ctx.shadowBlur = 40;
+                ctx.shadowBlur = 30;
                 ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
                 ctx.restore();
             }
 
-            // Линия свайпа
             if (swipeAnim && swipeAnim.progress < 0.8) {
                 const alpha = 0.3 * (1 - swipeAnim.progress);
                 ctx.save();
                 ctx.globalAlpha = alpha;
                 ctx.strokeStyle = '#f1c40f';
-                ctx.lineWidth = 3;
+                ctx.lineWidth = 2;
                 ctx.setLineDash([5, 8]);
                 ctx.shadowColor = '#f1c40f';
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 10;
                 const startX = swipeAnim.startCol * tileSize + tileSize / 2;
                 const startY = swipeAnim.startRow * tileSize + tileSize / 2;
                 const endX = swipeAnim.col * tileSize + tileSize / 2 + swipeAnim.offsetX * 0.5;
@@ -2256,7 +2584,7 @@
         }
 
         // ============================================================
-        // 10. ТАЙМЕР И ЗАВЕРШЕНИЕ
+        // 12. ТАЙМЕР И ЗАВЕРШЕНИЕ
         // ============================================================
         function startTimer() {
             if (timerInterval) clearInterval(timerInterval);
@@ -2280,7 +2608,6 @@
                         endGame();
                     }
                 }, 1000);
-                // Показываем подсказку через 3 секунды
                 if (hintTimeout) clearTimeout(hintTimeout);
                 hintTimeout = setTimeout(showHint, 3000);
             } else if (config.type === 'endless') {
@@ -2288,8 +2615,6 @@
                 timerDisplay.className = 'timer';
                 gameActive = true;
                 isGameOver = false;
-                isEndlessMode = true;
-                endlessLevel = 1;
                 if (hintTimeout) clearTimeout(hintTimeout);
                 hintTimeout = setTimeout(showHint, 3000);
             } else {
@@ -2326,21 +2651,31 @@
                 const best = localRecords[0];
                 bestEl.textContent = best;
 
+                const stats = getStats();
+                if (score === best && score > 0) {
+                    isNewRecord = true;
+                    SoundEngine.record();
+                    const badgeSpan = document.querySelector('.badge span');
+                    if (badgeSpan) {
+                        badgeSpan.classList.remove('record-pop');
+                        void badgeSpan.offsetWidth;
+                        badgeSpan.classList.add('record-pop');
+                    }
+                    icon.textContent = '🎉';
+                    title.textContent = 'Новый рекорд! 🎉';
+                }
+
                 const after = getUnlockedCount();
                 newAchievements = after - before;
 
-                if (best === score && newAchievements === 0) {
-                    SoundEngine.record();
-                    icon.textContent = '🎉';
-                    title.textContent = 'Новый рекорд!';
-                } else if (newAchievements > 0) {
-                    SoundEngine.achievement();
-                    icon.textContent = '🎖️';
-                    title.textContent = 'Новые достижения!';
-                } else {
+                if (!isNewRecord && newAchievements === 0) {
                     SoundEngine.gameOver();
                     icon.textContent = '⏰';
                     title.textContent = 'Время вышло!';
+                } else if (newAchievements > 0 && !isNewRecord) {
+                    SoundEngine.achievement();
+                    icon.textContent = '🎖️';
+                    title.textContent = 'Новые достижения!';
                 }
             } else {
                 SoundEngine.gameOver();
@@ -2351,7 +2686,7 @@
             }
 
             scoreEl.textContent = score;
-            achEl.textContent = newAchievements > 0 ? '🎉 +' + newAchievements : '—';
+            achEl.textContent = newAchievements > 0 ? '🎉 +' + newAchievements : (isNewRecord ? '🏆 Новый рекорд!' : '—');
             modal.classList.add('open');
         }
 
@@ -2371,6 +2706,7 @@
             swipeAnim = null;
             if (hintTimeout) clearTimeout(hintTimeout);
             hintHighlight = null;
+            isNewRecord = false;
             initGrid();
             score = 0;
             scoreDisplay.textContent = '0';
@@ -2379,7 +2715,7 @@
         }
 
         // ============================================================
-        // 11. СВАЙП
+        // 13. СВАЙП
         // ============================================================
         function getGridPos(clientX, clientY) {
             const rect = canvas.getBoundingClientRect();
@@ -2484,7 +2820,7 @@
         }
 
         // ============================================================
-        // 12. УПРАВЛЕНИЕ
+        // 14. УПРАВЛЕНИЕ
         // ============================================================
         let notificationTimeout = null;
 
@@ -2503,11 +2839,100 @@
             this.classList.toggle('muted', !enabled);
         });
 
-        // Ежедневный бонус
         document.getElementById('dailyBonus').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
             claimDailyBonus();
+        });
+
+        document.getElementById('menuTournamentBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showTournamentModal();
+        });
+        document.getElementById('tournamentBanner').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showTournamentModal();
+        });
+        document.getElementById('tournamentCloseBtn').addEventListener('click', function() {
+            document.getElementById('tournamentModal').classList.remove('open');
+        });
+
+        document.getElementById('inviteBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            const code = document.getElementById('inviteInput').value.trim().toUpperCase();
+            if (!code) {
+                showNotification('⚠️ Введи код!');
+                return;
+            }
+            applyInvite(code);
+            document.getElementById('inviteInput').value = '';
+        });
+
+        document.getElementById('menuStatsBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showStatsModal();
+        });
+        document.getElementById('footerStatsBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showStatsModal();
+        });
+        document.getElementById('statsCloseBtn').addEventListener('click', function() {
+            document.getElementById('statsModal').classList.remove('open');
+        });
+
+        document.getElementById('menuAchievementsBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showAchievementModal();
+        });
+        document.getElementById('footerAchievementsBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            showAchievementModal();
+        });
+        document.getElementById('achievementsCloseBtn').addEventListener('click', function() {
+            document.getElementById('achievementsModal').classList.remove('open');
+        });
+
+        document.getElementById('menuCustomizeBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            document.getElementById('customizeModal').classList.add('open');
+        });
+        document.getElementById('customizeCloseBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            document.getElementById('customizeModal').classList.remove('open');
+            applyCustomization();
+        });
+
+        document.querySelectorAll('.color-option').forEach(el => {
+            el.addEventListener('click', function() {
+                SoundEngine.init();
+                SoundEngine.click();
+                const color = this.dataset.color;
+                const custom = getCustomization();
+                custom.color = color;
+                saveCustomization(custom);
+                applyCustomization();
+            });
+        });
+
+        document.querySelectorAll('.theme-option').forEach(el => {
+            el.addEventListener('click', function() {
+                SoundEngine.init();
+                SoundEngine.click();
+                const theme = this.dataset.theme;
+                const custom = getCustomization();
+                custom.theme = theme;
+                saveCustomization(custom);
+                applyCustomization();
+            });
         });
 
         document.getElementById('playBtn').addEventListener('click', function() {
@@ -2548,7 +2973,6 @@
             showMenu();
         });
 
-        // Рекорды
         document.getElementById('menuRecordsBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
@@ -2560,12 +2984,11 @@
             showRecordsModal('local');
         });
 
-        // Онлайн топ
         document.getElementById('menuOnlineBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
             if (!onlineEnabled) {
-                alert('❌ Онлайн режим недоступен.');
+                alert('❌ Онлайн недоступен.');
                 return;
             }
             showRecordsModal('online');
@@ -2574,60 +2997,10 @@
             SoundEngine.init();
             SoundEngine.click();
             if (!onlineEnabled) {
-                alert('❌ Онлайн режим недоступен.');
+                alert('❌ Онлайн недоступен.');
                 return;
             }
             showRecordsModal('online');
-        });
-
-        // Достижения
-        document.getElementById('menuAchievementsBtn').addEventListener('click', function() {
-            SoundEngine.init();
-            SoundEngine.click();
-            showAchievementModal();
-        });
-        document.getElementById('footerAchievementsBtn').addEventListener('click', function() {
-            SoundEngine.init();
-            SoundEngine.click();
-            showAchievementModal();
-        });
-
-        // Кастомизация
-        document.getElementById('menuCustomizeBtn').addEventListener('click', function() {
-            SoundEngine.init();
-            SoundEngine.click();
-            document.getElementById('customizeModal').classList.add('open');
-        });
-
-        document.getElementById('customizeCloseBtn').addEventListener('click', function() {
-            SoundEngine.init();
-            SoundEngine.click();
-            document.getElementById('customizeModal').classList.remove('open');
-            applyCustomization();
-        });
-
-        document.querySelectorAll('.color-option').forEach(el => {
-            el.addEventListener('click', function() {
-                SoundEngine.init();
-                SoundEngine.click();
-                const color = this.dataset.color;
-                const custom = getCustomization();
-                custom.color = color;
-                saveCustomization(custom);
-                applyCustomization();
-            });
-        });
-
-        document.querySelectorAll('.theme-option').forEach(el => {
-            el.addEventListener('click', function() {
-                SoundEngine.init();
-                SoundEngine.click();
-                const theme = this.dataset.theme;
-                const custom = getCustomization();
-                custom.theme = theme;
-                saveCustomization(custom);
-                applyCustomization();
-            });
         });
 
         function showRecordsModal(source) {
@@ -2743,8 +3116,7 @@
             SoundEngine.click();
             const url = window.location.href;
             const stats = getStats();
-            const text = '🎮 Сыграй в "3 в ряд"! Мой лучший рекорд: ' + stats.bestScore + ' очков. Достижений: ' +
-                getUnlockedCount() + '/' + ACHIEVEMENTS.length + '. Присоединяйся: ' + url;
+            const text = '🎮 Сыграй в "3 в ряд"! Мой рекорд: ' + stats.bestScore + ' очков. Присоединяйся: ' + url;
             if (navigator.share) {
                 navigator.share({ title: '3 в ряд', text, url });
             } else {
@@ -2759,7 +3131,7 @@
         document.getElementById('vkBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
-            alert('🔐 Авторизация через ВКонтакте (демо-режим)\nВ реальном проекте здесь будет OAuth-авторизация.');
+            alert('🔐 ВКонтакте (демо)');
             this.classList.toggle('active');
             if (this.classList.contains('active')) {
                 this.textContent = 'ВК ✓';
@@ -2773,7 +3145,7 @@
         });
 
         // ============================================================
-        // 13. СОБЫТИЯ КАНВАСА
+        // 15. СОБЫТИЯ КАНВАСА
         // ============================================================
         canvas.addEventListener('mousedown', e => { e.preventDefault();
             onDown(e.clientX, e.clientY); });
@@ -2792,16 +3164,20 @@
             onUp(); }, { passive: false });
 
         // ============================================================
-        // 14. СТАРТ
+        // 16. СТАРТ
         // ============================================================
         async function init() {
+            SoundEngine.init();
+
             await checkConnection();
             if (onlineEnabled) await updateOnlineBadges();
+
             const savedNick = localStorage.getItem('game_nickname');
             if (savedNick) {
                 nickInput.value = savedNick;
                 currentNickname = savedNick;
             }
+
             applyCustomization();
             initGrid();
             showMenu();
@@ -2810,13 +3186,14 @@
             updateAchievementsUI();
             updateLevel();
             checkDailyBonus();
+            checkTournament();
+            updateTournamentRank();
             draw();
             gameActive = false;
             isGameOver = true;
-            console.log('✨ 3 в ряд — Делюкс версия (2 этап)!');
-            console.log('🎁 Ежедневные бонусы');
-            console.log('🎨 Кастомизация');
-            console.log('💡 Подсказки ходов');
+
+            console.log('✨ 3 в ряд — финальная версия! (без музыки)');
+            console.log('🏆 Турниры, 🤝 Приглашения, 📊 Статистика');
         }
         init();
     </script>
