@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>✨ 3 в ряд</title>
+    <title>✨ 3 в ряд — Делюкс</title>
     <style>
+        /* ===== ВСЕ СТИЛИ (полная версия) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -43,6 +44,7 @@
             z-index: 1;
         }
 
+        /* ===== ФОН (частицы) ===== */
         .bg-particles {
             position: absolute;
             inset: 0;
@@ -75,6 +77,7 @@
             }
         }
 
+        /* ===== МЕНЮ ===== */
         #menu {
             position: absolute;
             inset: 0;
@@ -160,6 +163,22 @@
             border-color: #4c75a3;
             color: #4c75a3;
         }
+        /* ===== БОНУС: кнопка кастомизации ===== */
+        #menu .customize-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            padding: 3px 14px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(9px, 1vw, 12px);
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.3s;
+        }
+        #menu .customize-btn:active {
+            transform: scale(0.95);
+        }
+
         #menu .mode-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -261,6 +280,40 @@
             color: #fff;
             background: rgba(255, 255, 255, 0.08);
         }
+        /* ===== БОНУС: ежедневный бонус ===== */
+        #menu .daily-bonus {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 30px;
+            padding: 4px 16px;
+            color: #f1c40f;
+            font-size: clamp(10px, 1.5vw, 13px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: all 0.3s;
+        }
+        #menu .daily-bonus:active {
+            transform: scale(0.95);
+        }
+        #menu .daily-bonus .bonus-icon {
+            font-size: clamp(16px, 2vw, 20px);
+        }
+        #menu .daily-bonus .bonus-text {
+            font-weight: 600;
+        }
+        #menu .daily-bonus .bonus-timer {
+            font-weight: 400;
+            opacity: 0.6;
+        }
+        #menu .daily-bonus.claimed {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
         #menu .stats {
             display: flex;
             gap: 10px;
@@ -327,6 +380,7 @@
             opacity: 1;
         }
 
+        /* ===== ХЕДЕР ===== */
         #header {
             display: flex;
             justify-content: space-between;
@@ -428,6 +482,7 @@
             opacity: 0.3;
         }
 
+        /* ===== КАНВАС ===== */
         .canvas-wrap {
             flex: 1;
             display: flex;
@@ -452,6 +507,7 @@
             cursor: grabbing;
         }
 
+        /* ===== ФУТЕР ===== */
         #footer {
             display: flex;
             justify-content: space-between;
@@ -487,6 +543,7 @@
             flex: 1.2;
         }
 
+        /* ===== МОДАЛЫ ===== */
         .modal-overlay {
             position: absolute;
             inset: 0;
@@ -539,9 +596,6 @@
             font-size: clamp(7px, 1vw, 10px);
             padding: 2px 8px;
             border-radius: 30px;
-            background: rgba(46, 204, 113, 0.15);
-            color: #2ecc71;
-            border: 1px solid rgba(46, 204, 113, 0.2);
         }
         .modal-box .sub {
             color: rgba(255, 255, 255, 0.25);
@@ -641,6 +695,71 @@
             transform: scale(0.94);
         }
 
+        /* ===== МОДАЛ КАСТОМИЗАЦИИ ===== */
+        .customize-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .customize-options .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .customize-options .option-group label {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(9px, 1.2vw, 11px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .customize-options .color-picker {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .customize-options .color-picker .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+        .customize-options .color-picker .color-option:active {
+            transform: scale(0.9);
+        }
+        .customize-options .color-picker .color-option.active {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .customize-options .theme-options {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .customize-options .theme-options .theme-option {
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: clamp(9px, 1.2vw, 11px);
+            cursor: pointer;
+            transition: all 0.2s;
+            touch-action: manipulation;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .customize-options .theme-options .theme-option:active {
+            transform: scale(0.95);
+        }
+        .customize-options .theme-options .theme-option.active {
+            border-color: #e94560;
+            color: #fff;
+            background: rgba(233, 69, 96, 0.12);
+        }
+
+        /* ===== ОКНО ЗАВЕРШЕНИЯ ===== */
         #gameOverModal {
             position: absolute;
             inset: 0;
@@ -731,6 +850,7 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
+        /* ===== УВЕДОМЛЕНИЯ ===== */
         #notification {
             position: absolute;
             top: 60px;
@@ -755,6 +875,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ===== АДАПТАЦИЯ ===== */
         @media (max-width: 440px) {
             .app {
                 border-radius: 0;
@@ -876,6 +997,10 @@
                 font-size: 11px;
                 padding: 4px 14px;
             }
+            .customize-options .color-picker .color-option {
+                width: 22px;
+                height: 22px;
+            }
         }
         @media (pointer: coarse) {
             #menu .mode-btn {
@@ -905,13 +1030,16 @@
 
         <div class="bg-particles" id="bgParticles"></div>
 
+        <!-- ===== МЕНЮ ===== -->
         <div id="menu">
             <div class="logo">✦ 3 в ряд</div>
             <div class="logo-sub">делюкс</div>
+
             <div class="user-section">
                 <input class="nick-input" id="nickInput" type="text" placeholder="Никнейм" maxlength="20" value="Admin">
                 <button class="vk-btn" id="vkBtn">ВКонтакте</button>
             </div>
+
             <div class="mode-grid">
                 <div class="mode-btn active" data-mode="1min">
                     <span class="icon">⚡</span>
@@ -960,22 +1088,36 @@
                     <div class="best-score" style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:2px;">нажми чтобы сменить</div>
                 </div>
             </div>
+
             <button class="play-btn" id="playBtn">▶ ИГРАТЬ</button>
+
             <div class="footer-links">
                 <span id="menuRecordsBtn">🏆 Рекорды</span>
                 <span id="menuOnlineBtn">🌐 Топ-100</span>
                 <span id="menuAchievementsBtn">🎖️ Достижения</span>
+                <span id="menuCustomizeBtn">🎨 Кастомизация</span>
             </div>
+
+            <!-- ===== ЕЖЕДНЕВНЫЙ БОНУС ===== -->
+            <div class="daily-bonus" id="dailyBonus">
+                <span class="bonus-icon">🎁</span>
+                <span class="bonus-text" id="bonusText">Ежедневный бонус!</span>
+                <span class="bonus-timer" id="bonusTimer"></span>
+            </div>
+
             <div class="achievements-preview" id="achievementsPreview"></div>
+
             <div class="stats" id="statsDisplay">
                 <div class="stat-item"><div class="num" id="statGames">0</div><div class="label">Игр</div></div>
                 <div class="stat-item"><div class="num" id="statBest">0</div><div class="label">Лучший</div></div>
                 <div class="stat-item"><div class="num" id="statLevel">1</div><div class="label">Уровень</div></div>
             </div>
+
             <div class="status" id="connectionStatus">⏳ Подключение...</div>
             <button class="share-btn" id="shareBtn">📤 Поделиться</button>
         </div>
 
+        <!-- ===== ХЕДЕР ===== -->
         <div id="header">
             <div class="logo-small">✦ 3 в ряд</div>
             <div class="right">
@@ -986,10 +1128,12 @@
             </div>
         </div>
 
+        <!-- ===== КАНВАС ===== -->
         <div class="canvas-wrap">
             <canvas id="canvas" width="400" height="400"></canvas>
         </div>
 
+        <!-- ===== ФУТЕР ===== -->
         <div id="footer">
             <button id="footerRecordsBtn">🏆</button>
             <button id="footerOnlineBtn">🌐</button>
@@ -998,6 +1142,7 @@
             <button class="primary" id="homeBtn">🏠</button>
         </div>
 
+        <!-- ===== МОДАЛ РЕКОРДОВ ===== -->
         <div class="modal-overlay" id="recordsModal">
             <div class="modal-box">
                 <div class="modal-header">
@@ -1017,6 +1162,39 @@
             </div>
         </div>
 
+        <!-- ===== МОДАЛ КАСТОМИЗАЦИИ ===== -->
+        <div class="modal-overlay" id="customizeModal">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2>🎨 Кастомизация</h2>
+                    <span class="source-badge" style="background:rgba(255,215,0,0.1);color:#f1c40f;">Настройки</span>
+                </div>
+                <div class="sub" style="color:rgba(255,255,255,0.2);">выбери свой стиль</div>
+                <div class="customize-options">
+                    <div class="option-group">
+                        <label>Цвет фишек</label>
+                        <div class="color-picker" id="colorPicker">
+                            <div class="color-option active" style="background:linear-gradient(135deg,#e94560,#c73652);" data-color="red"></div>
+                            <div class="color-option" style="background:linear-gradient(135deg,#3498db,#2980b9);" data-color="blue"></div>
+                            <div class="color-option" style="background:linear-gradient(135deg,#2ecc71,#27ae60);" data-color="green"></div>
+                            <div class="color-option" style="background:linear-gradient(135deg,#f39c12,#e67e22);" data-color="orange"></div>
+                            <div class="color-option" style="background:linear-gradient(135deg,#9b59b6,#8e44ad);" data-color="purple"></div>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label>Тема</label>
+                        <div class="theme-options" id="themeOptions">
+                            <div class="theme-option active" data-theme="dark">Тёмная</div>
+                            <div class="theme-option" data-theme="light">Светлая</div>
+                            <div class="theme-option" data-theme="space">Космос</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-btn" id="customizeCloseBtn">✕ Закрыть</button>
+            </div>
+        </div>
+
+        <!-- ===== ОКНО ЗАВЕРШЕНИЯ ===== -->
         <div id="gameOverModal">
             <div class="gameover-box">
                 <div class="gameover-icon" id="gameoverIcon">⏰</div>
@@ -1035,6 +1213,9 @@
     </div>
 
     <script>
+        // ============================================================
+        // 0. ФОН (частицы)
+        // ============================================================
         (function createParticles() {
             const container = document.getElementById('bgParticles');
             for (let i = 0; i < 25; i++) {
@@ -1102,7 +1283,10 @@
                     i * 80); } },
             achievement() { for (let i = 0; i < 6; i++) { setTimeout(() => { this.play(500 + i * 80, 0.1, 'sine',
                         0.15); }, i * 70); }
-                setTimeout(() => this.play(900, 0.3, 'sine', 0.25), 350); }
+                setTimeout(() => this.play(900, 0.3, 'sine', 0.25), 350); },
+            dailyBonus() { for (let i = 0; i < 4; i++) { setTimeout(() => { this.play(600 + i * 100, 0.1, 'sine',
+                        0.15); }, i * 80); }
+                setTimeout(() => this.play(900, 0.4, 'sine', 0.3), 320); }
         };
 
         // ============================================================
@@ -1126,6 +1310,12 @@
                     .bombsCollected >= 1 },
             { id: 'rocket_first', name: 'Первая ракета', desc: 'Собрать ракету (5 в ряд)', icon: '🚀', check: s => s
                     .rocketsCollected >= 1 },
+            { id: 'daily_bonus', name: 'Ежедневный бонус', desc: 'Забрать ежедневный бонус', icon: '🎁', check: s =>
+                    s.dailyBonusCollected >= 1 },
+            { id: 'daily_streak_3', name: 'Стрик 3 дня', desc: 'Забирать бонус 3 дня подряд', icon: '🔥', check: s =>
+                    s.dailyStreak >= 3 },
+            { id: 'daily_streak_7', name: 'Стрик 7 дней', desc: 'Забирать бонус 7 дней подряд', icon: '👑', check: s =>
+                    s.dailyStreak >= 7 },
         ];
 
         function getAchievements() {
@@ -1190,7 +1380,135 @@
         }
 
         // ============================================================
-        // 3. БЭКЕНД
+        // 3. ЕЖЕДНЕВНЫЙ БОНУС
+        // ============================================================
+        function getDailyBonus() {
+            try { return JSON.parse(localStorage.getItem('daily_bonus')) || { lastClaim: 0, streak: 0 }; } catch { return {
+                    lastClaim: 0, streak: 0 }; }
+        }
+
+        function saveDailyBonus(data) { localStorage.setItem('daily_bonus', JSON.stringify(data)); }
+
+        function checkDailyBonus() {
+            const data = getDailyBonus();
+            const now = Date.now();
+            const last = data.lastClaim;
+            const oneDay = 24 * 60 * 60 * 1000;
+
+            // Проверяем, можно ли забрать бонус
+            const canClaim = (now - last) >= oneDay;
+            const isNewDay = (now - last) >= oneDay;
+
+            // Обновляем стрик
+            if (isNewDay && (now - last) < oneDay * 2) {
+                data.streak += 1;
+            } else if (isNewDay) {
+                data.streak = 1;
+            }
+
+            // Если бонус не забран, показываем таймер
+            if (!canClaim) {
+                const remaining = oneDay - (now - last);
+                const hours = Math.floor(remaining / (60 * 60 * 1000));
+                const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+                document.getElementById('bonusText').textContent = 'Бонус через:';
+                document.getElementById('bonusTimer').textContent = hours + 'ч ' + minutes + 'м';
+                document.getElementById('dailyBonus').classList.add('claimed');
+                return false;
+            }
+
+            document.getElementById('bonusText').textContent = '🎁 Забрать бонус!';
+            document.getElementById('bonusTimer').textContent = '🔥 ' + data.streak + ' дней';
+            document.getElementById('dailyBonus').classList.remove('claimed');
+            return true;
+        }
+
+        function claimDailyBonus() {
+            const data = getDailyBonus();
+            const now = Date.now();
+            const oneDay = 24 * 60 * 60 * 1000;
+
+            if ((now - data.lastClaim) < oneDay) {
+                showNotification('⏳ Бонус уже получен сегодня!');
+                return;
+            }
+
+            // Проверяем стрик
+            if ((now - data.lastClaim) < oneDay * 2) {
+                data.streak += 1;
+            } else {
+                data.streak = 1;
+            }
+
+            data.lastClaim = now;
+            saveDailyBonus(data);
+
+            // Начисляем бонусные очки
+            const bonus = Math.min(50 + data.streak * 10, 200);
+            const stats = getStats();
+            stats.totalScore += bonus;
+            stats.dailyBonusCollected = (stats.dailyBonusCollected || 0) + 1;
+            stats.dailyStreak = data.streak;
+            saveStats(stats);
+
+            // Проверяем достижения
+            if (stats.dailyBonusCollected >= 1) unlockAchievement('daily_bonus');
+            if (stats.dailyStreak >= 3) unlockAchievement('daily_streak_3');
+            if (stats.dailyStreak >= 7) unlockAchievement('daily_streak_7');
+
+            SoundEngine.dailyBonus();
+            showNotification('🎁 +' + bonus + ' бонусных очков! Стрик: ' + data.streak + ' дней');
+
+            updateMenuBestScores();
+            renderStats();
+            updateAchievementsUI();
+            updateLevel();
+            checkDailyBonus();
+        }
+
+        // ============================================================
+        // 4. КАСТОМИЗАЦИЯ
+        // ============================================================
+        function getCustomization() {
+            try { return JSON.parse(localStorage.getItem('customization')) || { color: 'red', theme: 'dark' }; } catch {
+                return { color: 'red', theme: 'dark' }; }
+        }
+
+        function saveCustomization(data) { localStorage.setItem('customization', JSON.stringify(data)); }
+
+        function applyCustomization() {
+            const custom = getCustomization();
+            const app = document.getElementById('app');
+
+            // Тема
+            const bgColors = {
+                dark: 'linear-gradient(145deg, #141429, #1a1a3e)',
+                light: 'linear-gradient(145deg, #f0f0f0, #ffffff)',
+                space: 'linear-gradient(145deg, #0a0a2a, #1a0a2e)'
+            };
+            app.style.background = bgColors[custom.theme] || bgColors.dark;
+
+            // Цвет фишек (будет использован в draw)
+            const colors = {
+                red: ['#e94560', '#c73652'],
+                blue: ['#3498db', '#2980b9'],
+                green: ['#2ecc71', '#27ae60'],
+                orange: ['#f39c12', '#e67e22'],
+                purple: ['#9b59b6', '#8e44ad']
+            };
+            window.customColor = colors[custom.color] || colors.red;
+
+            // Обновляем активные элементы в UI
+            document.querySelectorAll('.color-option').forEach(el => {
+                el.classList.toggle('active', el.dataset.color === custom.color);
+            });
+            document.querySelectorAll('.theme-option').forEach(el => {
+                el.classList.toggle('active', el.dataset.theme === custom.theme);
+            });
+        }
+
+        // ============================================================
+        // 5. БЭКЕНД (Google Sheets)
         // ============================================================
         const BACKEND_URL =
             "https://script.google.com/macros/s/AKfycbxHQTE0IONZmWNgqkvwGKd51qRh6jrBMTyHkVjgtahYpX3yl43qNHAD1yniAUTlU3eM/exec";
@@ -1252,14 +1570,14 @@
         }
 
         // ============================================================
-        // 4. СТАТИСТИКА
+        // 6. СТАТИСТИКА
         // ============================================================
         function getStats() {
             try {
                 return JSON.parse(localStorage.getItem('game_stats_v2')) || { games: 0, totalScore: 0, bestScore: 0,
-                    maxCombo: 0, bombsCollected: 0, rocketsCollected: 0 };
+                    maxCombo: 0, bombsCollected: 0, rocketsCollected: 0, dailyBonusCollected: 0, dailyStreak: 0 };
             } catch { return { games: 0, totalScore: 0, bestScore: 0, maxCombo: 0, bombsCollected: 0,
-                    rocketsCollected: 0 }; }
+                    rocketsCollected: 0, dailyBonusCollected: 0, dailyStreak: 0 }; }
         }
 
         function saveStats(stats) { localStorage.setItem('game_stats_v2', JSON.stringify(stats)); }
@@ -1296,7 +1614,7 @@
         }
 
         // ============================================================
-        // 5. РЕКОРДЫ
+        // 7. РЕКОРДЫ
         // ============================================================
         function getLocalRecords() {
             try { return JSON.parse(localStorage.getItem('game_records_v6')) || {}; } catch { return {}; }
@@ -1325,7 +1643,7 @@
         }
 
         // ============================================================
-        // 6. ИГРА
+        // 8. ИГРА
         // ============================================================
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -1354,6 +1672,8 @@
         let currentSize = 8;
         let isEndlessMode = false;
         let endlessLevel = 1;
+        let hintHighlight = null;
+        let hintTimeout = null;
 
         const EMOJIS = ['🍎', '⭐', '🍒', '💎', '🍉'];
 
@@ -1368,6 +1688,7 @@
             renderStats();
             updateAchievementsUI();
             updateLevel();
+            checkDailyBonus();
         }
 
         function hideMenu() {
@@ -1463,6 +1784,8 @@
             swipeAnim = null;
             isGameOver = false;
             endlessLevel = 1;
+            hintHighlight = null;
+            if (hintTimeout) clearTimeout(hintTimeout);
         }
 
         function findMatches() {
@@ -1701,8 +2024,37 @@
             processAllMatches();
         }
 
+        // ===== ПОДСКАЗКА ХОДА =====
+        function showHint() {
+            if (hintTimeout) clearTimeout(hintTimeout);
+            hintHighlight = null;
+            const size = currentSize;
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    if (c < size - 1) {
+                        [grid[r][c], grid[r][c + 1]] = [grid[r][c + 1], grid[r][c]];
+                        if (findMatches().size > 0) {
+                            hintHighlight = { row: r, col: c };
+                            [grid[r][c], grid[r][c + 1]] = [grid[r][c + 1], grid[r][c]];
+                            return;
+                        }
+                        [grid[r][c], grid[r][c + 1]] = [grid[r][c + 1], grid[r][c]];
+                    }
+                    if (r < size - 1) {
+                        [grid[r][c], grid[r + 1][c]] = [grid[r + 1][c], grid[r][c]];
+                        if (findMatches().size > 0) {
+                            hintHighlight = { row: r, col: c };
+                            [grid[r][c], grid[r + 1][c]] = [grid[r + 1][c], grid[r][c]];
+                            return;
+                        }
+                        [grid[r][c], grid[r + 1][c]] = [grid[r + 1][c], grid[r][c]];
+                    }
+                }
+            }
+        }
+
         // ============================================================
-        // 7. ОТРИСОВКА (ПЛАВНЫЕ АНИМАЦИИ)
+        // 9. ОТРИСОВКА
         // ============================================================
         function draw() {
             const size = currentSize;
@@ -1719,19 +2071,11 @@
                 }
             }
 
-            // Обновляем анимации падения
-            for (const a of dropAnims) {
-                a.progress = Math.min(a.progress + 0.04, 1);
-            }
+            // Обновляем анимации
+            for (const a of dropAnims) a.progress = Math.min(a.progress + 0.04, 1);
             dropAnims = dropAnims.filter(a => a.progress < 1);
-
-            // Обновляем анимации исчезновения
-            for (const a of popAnims) {
-                a.progress += 0.06;
-            }
+            for (const a of popAnims) a.progress += 0.06;
             popAnims = popAnims.filter(a => a.progress < 1);
-
-            // Обновляем искры
             for (const s of sparkles) {
                 s.x += s.vx;
                 s.y += s.vy;
@@ -1763,7 +2107,8 @@
                 }
             }
 
-            // Рисуем все фишки
+            // Рисуем фишки
+            const customColor = window.customColor || ['#e94560', '#c73652'];
             for (const tile of tiles) {
                 if (tile.value === null || tile.value === undefined) continue;
 
@@ -1793,7 +2138,7 @@
                     rotation = progress * 0.3;
                 }
 
-                // Анимация свайпа (смещение)
+                // Анимация свайпа
                 let offsetX = 0,
                     offsetY = 0;
                 if (swipeAnim && swipeAnim.row === tile.row && swipeAnim.col === tile.col) {
@@ -1831,7 +2176,7 @@
                     ctx.shadowBlur = 0;
                 }
 
-                // Глянец
+                // Глянец с кастомным цветом
                 const radius = tileSize * 0.42;
                 const grad = ctx.createRadialGradient(-radius * 0.25, -radius * 0.25, 0, 0, 0, radius);
                 grad.addColorStop(0, 'rgba(255,255,255,0.25)');
@@ -1874,6 +2219,18 @@
                 ctx.restore();
             }
 
+            // Подсказка хода
+            if (hintHighlight && gameActive) {
+                const { row, col } = hintHighlight;
+                ctx.save();
+                ctx.globalAlpha = 0.3 + Math.sin(Date.now() / 300) * 0.15;
+                ctx.fillStyle = '#f1c40f';
+                ctx.shadowColor = '#f1c40f';
+                ctx.shadowBlur = 40;
+                ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+                ctx.restore();
+            }
+
             // Линия свайпа
             if (swipeAnim && swipeAnim.progress < 0.8) {
                 const alpha = 0.3 * (1 - swipeAnim.progress);
@@ -1899,7 +2256,7 @@
         }
 
         // ============================================================
-        // 8. ТАЙМЕР И ЗАВЕРШЕНИЕ
+        // 10. ТАЙМЕР И ЗАВЕРШЕНИЕ
         // ============================================================
         function startTimer() {
             if (timerInterval) clearInterval(timerInterval);
@@ -1923,6 +2280,9 @@
                         endGame();
                     }
                 }, 1000);
+                // Показываем подсказку через 3 секунды
+                if (hintTimeout) clearTimeout(hintTimeout);
+                hintTimeout = setTimeout(showHint, 3000);
             } else if (config.type === 'endless') {
                 timerDisplay.textContent = '♾️ ♾️';
                 timerDisplay.className = 'timer';
@@ -1930,12 +2290,16 @@
                 isGameOver = false;
                 isEndlessMode = true;
                 endlessLevel = 1;
+                if (hintTimeout) clearTimeout(hintTimeout);
+                hintTimeout = setTimeout(showHint, 3000);
             } else {
                 movesLeft = config.moves;
                 timerDisplay.textContent = '🎯 ' + movesLeft;
                 timerDisplay.className = 'timer';
                 gameActive = true;
                 isGameOver = false;
+                if (hintTimeout) clearTimeout(hintTimeout);
+                hintTimeout = setTimeout(showHint, 3000);
             }
         }
 
@@ -2005,6 +2369,8 @@
             bombsCollected = 0;
             rocketsCollected = 0;
             swipeAnim = null;
+            if (hintTimeout) clearTimeout(hintTimeout);
+            hintHighlight = null;
             initGrid();
             score = 0;
             scoreDisplay.textContent = '0';
@@ -2013,7 +2379,7 @@
         }
 
         // ============================================================
-        // 9. СВАЙП
+        // 11. СВАЙП
         // ============================================================
         function getGridPos(clientX, clientY) {
             const rect = canvas.getBoundingClientRect();
@@ -2042,6 +2408,8 @@
             sCol = pos.col;
             isSwiping = true;
             SoundEngine.select();
+            if (hintTimeout) clearTimeout(hintTimeout);
+            hintHighlight = null;
         }
 
         function onMove(cx, cy) {
@@ -2086,7 +2454,6 @@
             if (matches.size === 0) {
                 [grid[r1][c1], grid[r2][c2]] = [grid[r2][c2], grid[r1][c1]];
                 SoundEngine.fail();
-                // Показываем анимацию отката
                 swipeAnim = {
                     row: r1,
                     col: c1,
@@ -2117,7 +2484,7 @@
         }
 
         // ============================================================
-        // 10. УПРАВЛЕНИЕ
+        // 12. УПРАВЛЕНИЕ
         // ============================================================
         let notificationTimeout = null;
 
@@ -2134,6 +2501,13 @@
             const enabled = SoundEngine.toggle();
             this.textContent = enabled ? '🔊' : '🔇';
             this.classList.toggle('muted', !enabled);
+        });
+
+        // Ежедневный бонус
+        document.getElementById('dailyBonus').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            claimDailyBonus();
         });
 
         document.getElementById('playBtn').addEventListener('click', function() {
@@ -2174,6 +2548,7 @@
             showMenu();
         });
 
+        // Рекорды
         document.getElementById('menuRecordsBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
@@ -2185,6 +2560,7 @@
             showRecordsModal('local');
         });
 
+        // Онлайн топ
         document.getElementById('menuOnlineBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
@@ -2204,6 +2580,7 @@
             showRecordsModal('online');
         });
 
+        // Достижения
         document.getElementById('menuAchievementsBtn').addEventListener('click', function() {
             SoundEngine.init();
             SoundEngine.click();
@@ -2213,6 +2590,44 @@
             SoundEngine.init();
             SoundEngine.click();
             showAchievementModal();
+        });
+
+        // Кастомизация
+        document.getElementById('menuCustomizeBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            document.getElementById('customizeModal').classList.add('open');
+        });
+
+        document.getElementById('customizeCloseBtn').addEventListener('click', function() {
+            SoundEngine.init();
+            SoundEngine.click();
+            document.getElementById('customizeModal').classList.remove('open');
+            applyCustomization();
+        });
+
+        document.querySelectorAll('.color-option').forEach(el => {
+            el.addEventListener('click', function() {
+                SoundEngine.init();
+                SoundEngine.click();
+                const color = this.dataset.color;
+                const custom = getCustomization();
+                custom.color = color;
+                saveCustomization(custom);
+                applyCustomization();
+            });
+        });
+
+        document.querySelectorAll('.theme-option').forEach(el => {
+            el.addEventListener('click', function() {
+                SoundEngine.init();
+                SoundEngine.click();
+                const theme = this.dataset.theme;
+                const custom = getCustomization();
+                custom.theme = theme;
+                saveCustomization(custom);
+                applyCustomization();
+            });
         });
 
         function showRecordsModal(source) {
@@ -2358,7 +2773,7 @@
         });
 
         // ============================================================
-        // 11. СОБЫТИЯ КАНВАСА
+        // 13. СОБЫТИЯ КАНВАСА
         // ============================================================
         canvas.addEventListener('mousedown', e => { e.preventDefault();
             onDown(e.clientX, e.clientY); });
@@ -2377,7 +2792,7 @@
             onUp(); }, { passive: false });
 
         // ============================================================
-        // 12. СТАРТ
+        // 14. СТАРТ
         // ============================================================
         async function init() {
             await checkConnection();
@@ -2387,16 +2802,21 @@
                 nickInput.value = savedNick;
                 currentNickname = savedNick;
             }
+            applyCustomization();
             initGrid();
             showMenu();
             updateMenuBestScores();
             renderStats();
             updateAchievementsUI();
             updateLevel();
+            checkDailyBonus();
             draw();
             gameActive = false;
             isGameOver = true;
-            console.log('✨ 3 в ряд — финальная версия с плавными анимациями!');
+            console.log('✨ 3 в ряд — Делюкс версия (2 этап)!');
+            console.log('🎁 Ежедневные бонусы');
+            console.log('🎨 Кастомизация');
+            console.log('💡 Подсказки ходов');
         }
         init();
     </script>
